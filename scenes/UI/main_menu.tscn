@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://clobvqejdbi2v" path="res://assets/textures/planet/0030.png" id="30_rdmjg"]
 [ext_resource type="Texture2D" uid="uid://oqaryi2orohp" path="res://assets/textures/planet/0031.png" id="31_k7yf6"]
 [ext_resource type="Texture2D" uid="uid://sl7qvm8wli82" path="res://assets/textures/planet/0032.png" id="32_du6hl"]
-[ext_resource type="Texture2D" uid="uid://cmd4pc0xm5r45" path="res://assets/textures/gmae_name.png" id="33_lfq40"]
+[ext_resource type="Texture2D" uid="uid://cmd4pc0xm5r45" path="res://assets/textures/game_name.png" id="33_lfq40"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ia0ku"]
 animations = [{
