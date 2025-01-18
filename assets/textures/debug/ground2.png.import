@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caw1p3tu2ax5a"
-path="res://.godot/imported/ground.png-97ddf30f5ea8183e4ad90d90f7acbf4c.ctex"
+uid="uid://bogyy2pc0rw7l"
+path="res://.godot/imported/ground2.png-99afb94bee77906383a7e90cb75b97fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/debug/ground.png"
-dest_files=["res://.godot/imported/ground.png-97ddf30f5ea8183e4ad90d90f7acbf4c.ctex"]
+source_file="res://assets/textures/debug/ground2.png"
+dest_files=["res://.godot/imported/ground2.png-99afb94bee77906383a7e90cb75b97fe.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
