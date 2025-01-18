@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://eldb4ghilhrt"]
+
+[ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="1_nrk8b"]
+[ext_resource type="Script" path="res://scenes/units/unit.gd" id="1_r1dm4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kql5m"]
+size = Vector2(84, 104)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0tw5"]
+radius = 33.0
+height = 104.0
+
+[node name="Unit" type="CharacterBody2D"]
+script = ExtResource("1_r1dm4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_kql5m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_l0tw5")
+
+[node name="ClickDetector" parent="." instance=ExtResource("1_nrk8b")]
+unique_name_in_owner = true

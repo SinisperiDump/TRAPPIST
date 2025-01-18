@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfptufv4cyhhx"]
+
+[ext_resource type="Script" path="res://scenes/components/click_detector/click_detector.gd" id="1_30q2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fvls"]
+size = Vector2(150, 150)
+
+[node name="ClickDetector" type="Area2D"]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("1_30q2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3fvls")
