@@ -1,5 +1,2 @@
 [gd_scene format=3 uid="uid://bg4qgyteak4yn"]
-
-[node name="DebugLevel" type="Node2D"]
-
 [node name="Scenery" type="Node2D" parent="."]

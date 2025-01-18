@@ -12,13 +12,13 @@ func _ready() -> void:
 
 #region Between checks
 ## Returns true if float value is between given numbers
-func int_between(value: int, min_value: int, max_value:int):
+func int_between(value: int, min_value: int, max_value:int) -> bool:
 	if value >= min_value and value <= max_value:
 		return true
 	return false
 
 ## Returns true if float value is between given numbers
-func float_between(value: float, min_value: float, max_value:float):
+func float_between(value: float, min_value: float, max_value:float) -> bool:
 	if value >= min_value and value <= max_value:
 		return true
 	return false
