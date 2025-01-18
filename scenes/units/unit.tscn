@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://eldb4ghilhrt"]
+[gd_scene load_steps=6 format=3 uid="uid://eldb4ghilhrt"]
 
 [ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="1_nrk8b"]
 [ext_resource type="Script" path="res://scenes/units/unit.gd" id="1_r1dm4"]
+[ext_resource type="PackedScene" uid="uid://cjat3k01e618r" path="res://scenes/components/status_component.tscn" id="3_3g6fi"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kql5m"]
 size = Vector2(84, 104)
@@ -22,3 +23,5 @@ texture = SubResource("PlaceholderTexture2D_kql5m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_l0tw5")
+
+[node name="StatusComponent" parent="." instance=ExtResource("3_3g6fi")]
