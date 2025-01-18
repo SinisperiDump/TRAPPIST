@@ -1,30 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://t5wvk7amkuoc"]
+[gd_scene load_steps=2 format=3 uid="uid://t5wvk7amkuoc"]
 
 [ext_resource type="Script" path="res://scenes/management/game_world.gd" id="1_lwtwu"]
-[ext_resource type="PackedScene" path="res://scenes/levels/debug_level.tscn" id="2_juyvc"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jf0ih"]
-sky_top_color = Color(0.106858, 0.493372, 0.709823, 1)
-sky_horizon_color = Color(0.635578, 0.759711, 0.823806, 1)
-sky_curve = 0.0955921
-ground_bottom_color = Color(0.457354, 0.430168, 0.406674, 1)
-ground_horizon_color = Color(0.635294, 0.760784, 0.823529, 1)
-ground_curve = 0.0186606
-
-[sub_resource type="Sky" id="Sky_p20ky"]
-sky_material = SubResource("ProceduralSkyMaterial_jf0ih")
-
-[sub_resource type="Environment" id="Environment_k40k7"]
-background_mode = 2
-sky = SubResource("Sky_p20ky")
-tonemap_mode = 2
 
 [node name="GameWorld" type="Node"]
 script = ExtResource("1_lwtwu")
-start_level = ExtResource("2_juyvc")
-
-[node name="Environment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_k40k7")
 
 [node name="Sun" type="DirectionalLight2D" parent="."]
 rotation = 3.14159

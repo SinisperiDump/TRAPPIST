@@ -1,4 +1,142 @@
-[gd_scene format=3 uid="uid://jg0rjuj44pe2"]
+[gd_scene load_steps=35 format=3 uid="uid://jg0rjuj44pe2"]
+
+[ext_resource type="Texture2D" uid="uid://dmsord3s7iw82" path="res://assets/textures/planet/0001.png" id="1_rnf5x"]
+[ext_resource type="Texture2D" uid="uid://dfmni4jtkvla6" path="res://assets/textures/planet/0002.png" id="2_1q8ry"]
+[ext_resource type="Texture2D" uid="uid://dp0hrqmkg8btd" path="res://assets/textures/planet/0003.png" id="3_hodmk"]
+[ext_resource type="Texture2D" uid="uid://dslnafey10dae" path="res://assets/textures/planet/0004.png" id="4_k5xyi"]
+[ext_resource type="Texture2D" uid="uid://dhvnkfgdhtp1a" path="res://assets/textures/planet/0005.png" id="5_7yb3p"]
+[ext_resource type="Texture2D" uid="uid://dq58iamllus1r" path="res://assets/textures/planet/0006.png" id="6_jmyel"]
+[ext_resource type="Texture2D" uid="uid://dogtiai0jhps3" path="res://assets/textures/planet/0007.png" id="7_53shw"]
+[ext_resource type="Texture2D" uid="uid://d1rsmdxfhpthu" path="res://assets/textures/planet/0008.png" id="8_ic3ec"]
+[ext_resource type="Texture2D" uid="uid://cvegpcy4gyvoy" path="res://assets/textures/planet/0009.png" id="9_sduj0"]
+[ext_resource type="Texture2D" uid="uid://dqi1thqf3qqip" path="res://assets/textures/planet/0010.png" id="10_4u2n6"]
+[ext_resource type="Texture2D" uid="uid://b683122sxkbcq" path="res://assets/textures/planet/0011.png" id="11_x8hhp"]
+[ext_resource type="Texture2D" uid="uid://cs20vckk7ddh8" path="res://assets/textures/planet/0012.png" id="12_rmwac"]
+[ext_resource type="Texture2D" uid="uid://b36cig70a67pm" path="res://assets/textures/planet/0013.png" id="13_6o8oj"]
+[ext_resource type="Texture2D" uid="uid://b3h5vio08sh45" path="res://assets/textures/planet/0014.png" id="14_bat1a"]
+[ext_resource type="Texture2D" uid="uid://b5jrxit37xrft" path="res://assets/textures/planet/0015.png" id="15_1rlws"]
+[ext_resource type="Texture2D" uid="uid://cql3gvl1uytaa" path="res://assets/textures/planet/0016.png" id="16_6dte8"]
+[ext_resource type="Texture2D" uid="uid://bejml3pem1qxq" path="res://assets/textures/planet/0017.png" id="17_d5xoe"]
+[ext_resource type="Texture2D" uid="uid://duojpw7rhyvte" path="res://assets/textures/planet/0018.png" id="18_kh33i"]
+[ext_resource type="Texture2D" uid="uid://bdkry2s7d17ey" path="res://assets/textures/planet/0019.png" id="19_7b3fh"]
+[ext_resource type="Texture2D" uid="uid://bnkl8jgs8llbn" path="res://assets/textures/planet/0020.png" id="20_72ehn"]
+[ext_resource type="Texture2D" uid="uid://d3pko3q82f3k1" path="res://assets/textures/planet/0021.png" id="21_lg40p"]
+[ext_resource type="Texture2D" uid="uid://d07uffkky1lhr" path="res://assets/textures/planet/0022.png" id="22_nra3p"]
+[ext_resource type="Texture2D" uid="uid://3gw1id8xxjp6" path="res://assets/textures/planet/0023.png" id="23_payl3"]
+[ext_resource type="Texture2D" uid="uid://btele7wtwh6qd" path="res://assets/textures/planet/0024.png" id="24_iytuf"]
+[ext_resource type="Texture2D" uid="uid://baedvfgg2nnhj" path="res://assets/textures/planet/0025.png" id="25_odukq"]
+[ext_resource type="Texture2D" uid="uid://bq4mtq2wpi5g0" path="res://assets/textures/planet/0026.png" id="26_1a6ki"]
+[ext_resource type="Texture2D" uid="uid://cb7dyebqugtk" path="res://assets/textures/planet/0027.png" id="27_roq73"]
+[ext_resource type="Texture2D" uid="uid://c4lf4ra56xnwh" path="res://assets/textures/planet/0028.png" id="28_0mdjo"]
+[ext_resource type="Texture2D" uid="uid://ddxv5f2aj2nve" path="res://assets/textures/planet/0029.png" id="29_dn8lj"]
+[ext_resource type="Texture2D" uid="uid://clobvqejdbi2v" path="res://assets/textures/planet/0030.png" id="30_rdmjg"]
+[ext_resource type="Texture2D" uid="uid://oqaryi2orohp" path="res://assets/textures/planet/0031.png" id="31_k7yf6"]
+[ext_resource type="Texture2D" uid="uid://sl7qvm8wli82" path="res://assets/textures/planet/0032.png" id="32_du6hl"]
+[ext_resource type="Texture2D" uid="uid://cmd4pc0xm5r45" path="res://assets/textures/gmae_name.png" id="33_lfq40"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ia0ku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rnf5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1q8ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hodmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k5xyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7yb3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jmyel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_53shw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ic3ec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sduj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4u2n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x8hhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_rmwac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6o8oj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bat1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1rlws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6dte8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_d5xoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_kh33i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_7b3fh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_72ehn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_lg40p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_nra3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_payl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_iytuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_odukq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_1a6ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_roq73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_0mdjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_dn8lj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_rdmjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_k7yf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_du6hl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +145,80 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(970, 300)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_ia0ku")
+autoplay = "default"
+frame_progress = 0.437834
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(974, 657)
+scale = Vector2(4, 4)
+texture = ExtResource("33_lfq40")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 4.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "START"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS"
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
