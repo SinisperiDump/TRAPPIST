@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://drx5xgpnxj15f"]
+[gd_scene load_steps=2 format=3 uid="uid://drx5xgpnxj15f"]
+
+[sub_resource type="TileSet" id="TileSet_iq616"]
+tile_shape = 1
 
 [node name="DebugLevel" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_iq616")
