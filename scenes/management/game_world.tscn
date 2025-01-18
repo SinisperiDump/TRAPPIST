@@ -26,8 +26,10 @@ start_level = ExtResource("2_juyvc")
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k40k7")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+[node name="Sun" type="DirectionalLight2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.866025, -0.661438)
+skew = 0.713725
 shadow_enabled = true
 
 [node name="Levels" type="Node" parent="."]
