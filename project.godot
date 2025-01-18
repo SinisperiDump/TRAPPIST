@@ -15,10 +15,22 @@ run/main_scene="res://scenes/management/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/textures/icon.svg"
 
+[autoload]
+
+Refs="*res://scenes/management/refs.tscn"
+Utils="*res://scenes/management/utils.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/resizable=false
+
 [file_customization]
 
 folder_colors={
 "res://assets/": "red",
+"res://resources/": "blue",
 "res://scenes/": "green"
 }
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpvxs7xtdwywg"]
+
+[ext_resource type="Script" path="res://scenes/management/refs.gd" id="1_vjbk4"]
+
+[node name="Refs" type="Node"]
+script = ExtResource("1_vjbk4")
