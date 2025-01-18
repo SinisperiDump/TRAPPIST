@@ -10,14 +10,15 @@ size = Vector2(84, 104)
 radius = 33.0
 height = 104.0
 
-[node name="Unit" type="CharacterBody2D"]
+[node name="Unit" type="CharacterBody2D" node_paths=PackedStringArray("status")]
 script = ExtResource("1_r1dm4")
+status = NodePath("")
+
+[node name="ClickDetector" parent="." instance=ExtResource("1_nrk8b")]
+unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_kql5m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_l0tw5")
-
-[node name="ClickDetector" parent="." instance=ExtResource("1_nrk8b")]
-unique_name_in_owner = true
