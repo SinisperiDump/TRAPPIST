@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://eldb4ghilhrt"]
+
+[ext_resource type="Script" path="res://scenes/units/worker_unit.gd" id="1_m3f7f"]
+[ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="2_acxg0"]
+[ext_resource type="PackedScene" uid="uid://cjat3k01e618r" path="res://scenes/components/status_component.tscn" id="3_dpqda"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kql5m"]
+size = Vector2(84, 104)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l0tw5"]
+radius = 33.0
+height = 104.0
+
+[node name="WorkerUnit" type="CharacterBody2D" node_paths=PackedStringArray("status")]
+script = ExtResource("1_m3f7f")
+status = NodePath("StatusComponent")
+
+[node name="ClickDetector" parent="." instance=ExtResource("2_acxg0")]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_kql5m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_l0tw5")
+
+[node name="StatusComponent" parent="." instance=ExtResource("3_dpqda")]

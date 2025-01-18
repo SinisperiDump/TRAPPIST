@@ -1,7 +1,4 @@
-## Parent class for all the interactible guys in the game: Player, units and enemies
-## When creating an inherited class, make sure to call super._ready() in the child's _ready function
-
-class_name Unit extends CharacterBody2D
+extends CharacterBody2D
 
 @onready var click_detector: ClickDetector = %ClickDetector
 
