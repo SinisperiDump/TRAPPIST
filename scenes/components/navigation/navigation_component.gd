@@ -43,6 +43,9 @@ func do_navigation() -> void:
 		nav_agent.set_target_position(current_target)
 
 	var dir = nav_agent.get_next_path_position() - self.global_position
-	var desired_velocity = dir.normalized() * desired_speed
+	var desired_velocity: Vector2 = Vector2.ZERO
+	desired_velocity.x = dir.normalized().x * desired_speed
+	desired_velocity.y = dir.normalized().y * (desired_speed - desired_speed / 3)
+
 	nav_agent.set_velocity(desired_velocity)
 	previous_target = current_target

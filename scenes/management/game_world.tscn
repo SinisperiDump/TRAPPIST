@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://t5wvk7amkuoc"]
+[gd_scene load_steps=7 format=3 uid="uid://t5wvk7amkuoc"]
 
 [ext_resource type="Script" path="res://scenes/management/game_world.gd" id="1_lwtwu"]
 [ext_resource type="PackedScene" uid="uid://drx5xgpnxj15f" path="res://scenes/levels/debug_level.tscn" id="2_4v6ws"]
 [ext_resource type="PackedScene" uid="uid://br43gtjsq3ddf" path="res://scenes/units/temp/dummy_guy.tscn" id="3_ixbbf"]
 [ext_resource type="PackedScene" uid="uid://bhst7dqegs2b0" path="res://scenes/components/unit_dispatcher/unit_dispatcher.tscn" id="3_nvfod"]
 [ext_resource type="PackedScene" uid="uid://csn0fexxbmjm3" path="res://scenes/UI/unit_selection/unit_selection_ui.tscn" id="5_e4vsh"]
+[ext_resource type="Script" path="res://scenes/camera/camera.gd" id="6_8vqvl"]
 
 [node name="GameWorld" type="Node"]
 script = ExtResource("1_lwtwu")
@@ -60,3 +61,6 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 unit_dispatcher = NodePath("../../UnitDispatcher")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("6_8vqvl")
