@@ -26,37 +26,26 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
-		if event.is_pressed():
-			if !drag_started:
-				selection_start_pos = get_global_mouse_position()
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
+				if !drag_started:
+					selection_start_pos = get_global_mouse_position()
 
-				drag_started = true
+					drag_started = true
 
-		if !event.is_pressed():  # button up
-			# stop drawing selection box
-			# add guys to seled_units
-			# if it is a new selection return here
-			if drag_started:
-				var mp = get_global_mouse_position()
-				var sp = selection_start_pos
-				var diff = mp - sp
-
-				if diff.length() >= 15:
+			if !event.is_pressed():  # button up
+				if drag_started:
 					print("selecting")
 					unselect_units()
 					add_units_to_selection()
 					drag_started = false
 					selection_rect = Rect2(0.0, 0.0, 0.0, 0.0)
 					queue_redraw()
-					return
 
-			# in the case you just click on the ground
+		if event.button_index == MOUSE_BUTTON_RIGHT && !event.is_pressed():
 			if !selected_units.is_empty():
 				dispatch_orders()
-			drag_started = false
-			selection_rect = Rect2(0.0, 0.0, 0.0, 0.0)
-			queue_redraw()
 
 	if event is InputEventMouseMotion:
 		if drag_started:
@@ -78,26 +67,24 @@ func _draw() -> void:
 
 
 func push_unit(unit: Node) -> void:
-	selected_units[unit.get_instance_id()] = unit
+	selected_units[str(unit.get_instance_id())] = unit
 	unit_pushed.emit(unit)
-	print(selected_units)
 
 
 func pop_unit(unit: Node) -> void:
-	# unit.get_unselected()
-
-	selected_units.erase(unit.get_instance_id())
 	unit_popped.emit(unit)
 
 
 func unselect_units() -> void:
 	for key in selected_units:
 		pop_unit(selected_units[key])
+	selected_units = {}
 
 
 func dispatch_orders() -> void:
 	# unit.move_to(mouse_position)
 	for key in selected_units:
+		# testing purposes
 		if selected_units[key].has_method("move_to"):
 			selected_units[key].move_to()
 
@@ -107,3 +94,4 @@ func add_units_to_selection() -> void:
 	for unit in unit_array:
 		if selection_rect.abs().has_point(unit.global_position):
 			push_unit(unit)
+	print(selected_units)
