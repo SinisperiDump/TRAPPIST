@@ -5,6 +5,8 @@ signal unit_popped
 
 var move_order_position: Vector2 = Vector2.ZERO
 
+var selected_units: Dictionary = {}
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	pass
