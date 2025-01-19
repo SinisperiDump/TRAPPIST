@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://t5wvk7amkuoc"]
+[gd_scene load_steps=3 format=3 uid="uid://t5wvk7amkuoc"]
 
 [ext_resource type="Script" path="res://scenes/management/game_world.gd" id="1_lwtwu"]
+[ext_resource type="PackedScene" uid="uid://drx5xgpnxj15f" path="res://scenes/levels/debug_level.tscn" id="2_4v6ws"]
 
 [node name="GameWorld" type="Node"]
 script = ExtResource("1_lwtwu")
+start_level = ExtResource("2_4v6ws")
 
 [node name="Sun" type="DirectionalLight2D" parent="."]
 rotation = 3.14159

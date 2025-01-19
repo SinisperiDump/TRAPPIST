@@ -3,11 +3,11 @@ extends Node
 
 ## Default level that will run when game start
 @export var start_level: PackedScene
+## Reference to main scene
+var main_scene: Main
 
-## World Environment
-@onready var environment: WorldEnvironment = $Environment
 ## Sun, Controls lighting of the level
-@onready var sun: DirectionalLight3D = $Sun
+@onready var sun: DirectionalLight2D = $Sun
 ## Node that holds all currently loaded levels as it's child
 @onready var levels: Node = $Levels
 ## Node that holds all currently loaded Player Units as it's child
@@ -17,5 +17,5 @@ extends Node
 
 
 func _ready() -> void:
-	var new_level: Node3D = start_level.instantiate()
+	var new_level: Node2D = start_level.instantiate()
 	levels.add_child(new_level)
