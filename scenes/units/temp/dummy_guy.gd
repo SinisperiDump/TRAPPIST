@@ -4,7 +4,7 @@ var speed: float = 0.0
 @onready var unit_data: UnitDataComponent = $UnitDataComponent
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	self.velocity = Vector2.RIGHT * speed
 	move_and_slide()
 

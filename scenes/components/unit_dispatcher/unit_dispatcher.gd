@@ -36,7 +36,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 			if !event.is_pressed():  # button up
 				if drag_started:
-					print("selecting")
 					unselect_units()
 					add_units_to_selection()
 					drag_started = false
@@ -82,16 +81,6 @@ func unselect_units() -> void:
 	unit_selection_changed.emit()
 
 
-func dispatch_orders() -> void:
-	# unit.move_to(mouse_position)
-	for key in selected_units:
-		# testing purposes
-		if selected_units[key].has_method("move_to"):
-			selected_units[key].move_to()
-		else:
-			print("Add move_to function to Unit to make it move")
-
-
 func add_units_to_selection() -> void:
 	var unit_array: Array[Node] = selectable_units.get_children()
 	for unit in unit_array:
@@ -103,8 +92,19 @@ func add_units_to_selection() -> void:
 func _on_single_unit_selected(unit: Node, additive: bool) -> void:
 	if additive:
 		push_unit(unit)
+		unit_selection_changed.emit()
 		return
 
 	unselect_units()
 	push_unit(unit)
 	unit_selection_changed.emit()
+
+
+func dispatch_orders() -> void:
+	# unit.move_to(mouse_position)
+	for key in selected_units:
+		# testing purposes
+		if selected_units[key].has_method("move_to"):
+			selected_units[key].move_to()
+		else:
+			print("Add move_to function to Unit to make it move")
