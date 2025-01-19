@@ -13,12 +13,6 @@ var selection_rect: Rect2
 var selection_start_pos: Vector2 = Vector2.ZERO
 
 var drag_started: bool = false
-## Cklick on ground
-## dispatch order if selected_units is not empty on button up
-## if selected_units are empty nothing happens
-
-## nomatter if selected_units is empty or not, start drawing box
-## when mouse let go, stop drawing box and refresh selected units with whatever is under the box
 
 
 func _ready() -> void:
@@ -54,21 +48,25 @@ func _unhandled_input(event: InputEvent) -> void:
 			queue_redraw()
 
 
+## Draw 2 selection rectengles one for border, another for the background
 func _draw() -> void:
 	if selection_rect.size != Vector2.ZERO:
 		draw_rect(selection_rect, Color.GREEN, false, 2, false)
 		draw_rect(selection_rect, Color(0.0, 1.0, 0.0, 0.07), true)
 
 
+## Add unit to selected hash map
 func push_unit(unit: Node) -> void:
 	selected_units[str(unit.get_instance_id())] = unit
 	unit_pushed.emit(unit)
 
 
+## Remove unit from hash map
 func pop_unit(unit: Node) -> void:
 	unit_popped.emit(unit)
 
 
+## Reset hash map and unselect every unit
 func unselect_units() -> void:
 	for key in selected_units:
 		pop_unit(selected_units[key])
@@ -76,6 +74,7 @@ func unselect_units() -> void:
 	unit_selection_changed.emit()
 
 
+## If unit in the selection box, add it to selection
 func add_units_to_selection() -> void:
 	var unit_array: Array[Node] = selectable_units.get_children()
 	for unit in unit_array:
@@ -84,6 +83,7 @@ func add_units_to_selection() -> void:
 	unit_selection_changed.emit()
 
 
+## Add unit to selection or clear selection and add this unit
 func _on_single_unit_selected(unit: Node, additive: bool) -> void:
 	if additive:
 		push_unit(unit)
@@ -95,6 +95,7 @@ func _on_single_unit_selected(unit: Node, additive: bool) -> void:
 	unit_selection_changed.emit()
 
 
+## Send move order to selected units if they are not a building and can walk
 func dispatch_orders() -> void:
 	# unit.move_to(mouse_position)
 	for key in selected_units:
