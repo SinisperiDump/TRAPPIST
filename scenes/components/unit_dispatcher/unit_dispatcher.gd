@@ -98,9 +98,12 @@ func _on_single_unit_selected(unit: Node, additive: bool) -> void:
 ## Send move order to selected units if they are not a building and can walk
 func dispatch_orders() -> void:
 	# unit.move_to(mouse_position)
+	var temp: Vector2 = get_global_mouse_position()
 	for key in selected_units:
 		# testing purposes
 		if selected_units[key].unit_data.unit_type != UnitDataComponent.UnitType.BUILDING:
-			selected_units[key].move_to(get_global_mouse_position())
+			var order_pos = temp
+			selected_units[key].move_to(order_pos)
+			temp = Utils.choose_point_in_rad(order_pos, 100, 100)
 		else:
 			print("Add move_to function to Unit to make it move")

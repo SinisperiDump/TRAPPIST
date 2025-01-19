@@ -22,10 +22,23 @@ selectable_units = NodePath("../Players")
 
 [node name="Levels" type="Node" parent="."]
 
-[node name="Players" type="Node" parent="."]
+[node name="Players" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="DummyGuy" parent="Players" instance=ExtResource("3_ixbbf")]
 position = Vector2(238, 301)
+
+[node name="DummyGuy3" parent="Players" instance=ExtResource("3_ixbbf")]
+position = Vector2(59, 164)
+
+[node name="DummyGuy4" parent="Players" instance=ExtResource("3_ixbbf")]
+position = Vector2(655, 122)
+
+[node name="DummyGuy5" parent="Players" instance=ExtResource("3_ixbbf")]
+position = Vector2(406, 144)
+
+[node name="DummyGuy6" parent="Players" instance=ExtResource("3_ixbbf")]
+position = Vector2(589, 347)
 
 [node name="DummyGuy2" parent="Players" instance=ExtResource("3_ixbbf")]
 position = Vector2(417, 536)
