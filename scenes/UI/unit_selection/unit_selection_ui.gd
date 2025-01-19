@@ -17,6 +17,7 @@ func _update_selected() -> void:
 	for unit_id in unit_dispatcher.selected_units:
 		var new_portrait = UNIT_PORTRAIT.instantiate()
 		selected_container.add_child(new_portrait)
+		new_portrait.portrait = unit_dispatcher.selected_units[unit_id].unit_data.icon
 
 
 func _clear_grid() -> void:
