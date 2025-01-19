@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://drx5xgpnxj15f"]
+[gd_scene load_steps=5 format=4 uid="uid://drx5xgpnxj15f"]
 
 [ext_resource type="Texture2D" uid="uid://bogyy2pc0rw7l" path="res://assets/textures/debug/ground2.png" id="1_esvov"]
 [ext_resource type="PackedScene" uid="uid://bmide6nqcmh6e" path="res://scenes/buildings/base_building.tscn" id="2_ra1pw"]
-[ext_resource type="PackedScene" uid="uid://bhst7dqegs2b0" path="res://scenes/components/unit_dispatcher/unit_dispatcher.tscn" id="3_5yjxt"]
-[ext_resource type="PackedScene" uid="uid://br43gtjsq3ddf" path="res://scenes/units/temp/dummy_guy.tscn" id="4_hvwrx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_djsun"]
 texture = ExtResource("1_esvov")
@@ -25,8 +23,3 @@ tile_set = SubResource("TileSet_sibxc")
 
 [node name="Base" parent="." instance=ExtResource("2_ra1pw")]
 position = Vector2(493, 287)
-
-[node name="UnitDispatcher" parent="." instance=ExtResource("3_5yjxt")]
-
-[node name="DummyGuy" parent="." instance=ExtResource("4_hvwrx")]
-position = Vector2(188, 315)

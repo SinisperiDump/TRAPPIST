@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://t5wvk7amkuoc"]
+[gd_scene load_steps=5 format=3 uid="uid://t5wvk7amkuoc"]
 
 [ext_resource type="Script" path="res://scenes/management/game_world.gd" id="1_lwtwu"]
 [ext_resource type="PackedScene" uid="uid://drx5xgpnxj15f" path="res://scenes/levels/debug_level.tscn" id="2_4v6ws"]
+[ext_resource type="PackedScene" uid="uid://br43gtjsq3ddf" path="res://scenes/units/temp/dummy_guy.tscn" id="3_ixbbf"]
+[ext_resource type="PackedScene" uid="uid://bhst7dqegs2b0" path="res://scenes/components/unit_dispatcher/unit_dispatcher.tscn" id="3_nvfod"]
 
 [node name="GameWorld" type="Node"]
 script = ExtResource("1_lwtwu")
@@ -13,8 +15,18 @@ scale = Vector2(0.866025, -0.661438)
 skew = 0.713725
 shadow_enabled = true
 
+[node name="UnitDispatcher" parent="." node_paths=PackedStringArray("selectable_units") instance=ExtResource("3_nvfod")]
+z_index = 9
+selectable_units = NodePath("../Players")
+
 [node name="Levels" type="Node" parent="."]
 
 [node name="Players" type="Node" parent="."]
+
+[node name="DummyGuy" parent="Players" instance=ExtResource("3_ixbbf")]
+position = Vector2(238, 301)
+
+[node name="DummyGuy2" parent="Players" instance=ExtResource("3_ixbbf")]
+position = Vector2(417, 536)
 
 [node name="Enemies" type="Node" parent="."]

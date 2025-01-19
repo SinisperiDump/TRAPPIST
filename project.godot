@@ -19,6 +19,7 @@ config/icon="res://assets/textures/icon.svg"
 
 Refs="*res://scenes/management/refs.tscn"
 Utils="*res://scenes/management/utils.tscn"
+EventBus="*res://scenes/management/event_bus.gd"
 
 [display]
 
@@ -36,6 +37,10 @@ folder_colors={
 "res://resources/": "blue",
 "res://scenes/": "green"
 }
+
+[global_group]
+
+unit=""
 
 [input]
 
