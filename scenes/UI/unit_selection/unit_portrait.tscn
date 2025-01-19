@@ -1,9 +1,12 @@
-[gd_scene format=3 uid="uid://llehib3ag4t3"]
+[gd_scene load_steps=2 format=3 uid="uid://llehib3ag4t3"]
+
+[ext_resource type="Script" path="res://scenes/UI/unit_selection/unit_portrait.gd" id="1_sihgh"]
 
 [node name="UnitPortrait" type="PanelContainer"]
 custom_minimum_size = Vector2(50, 50)
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_sihgh")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -14,4 +17,8 @@ theme_override_constants/margin_bottom = 2
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(1, 0, 1, 1)
+color = Color(0.484451, 0.670377, 0.672843, 1)
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
