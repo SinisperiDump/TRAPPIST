@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmide6nqcmh6e"]
+
+[ext_resource type="Texture2D" uid="uid://bydi55x5rdb0m" path="res://assets/textures/debug/debug_base.png" id="1_1svcd"]
+[ext_resource type="Script" path="res://scenes/buildings/base_building.gd" id="1_l72ex"]
+[ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="2_k7ne1"]
+[ext_resource type="PackedScene" uid="uid://cjat3k01e618r" path="res://scenes/components/status/status_component.tscn" id="4_elhvf"]
+[ext_resource type="Script" path="res://resources/stat.gd" id="5_eds7t"]
+
+[sub_resource type="Resource" id="Resource_2iiq1"]
+script = ExtResource("5_eds7t")
+max_value = 1000.0
+max_bonus = 0.0
+temp_value = 0.0
+
+[sub_resource type="Resource" id="Resource_rjdkl"]
+script = ExtResource("5_eds7t")
+max_value = 0.0
+max_bonus = 0.0
+temp_value = 0.0
+
+[sub_resource type="Resource" id="Resource_x7cod"]
+script = ExtResource("5_eds7t")
+max_value = 0.0
+max_bonus = 0.0
+temp_value = 0.0
+
+[sub_resource type="Resource" id="Resource_wlt8g"]
+script = ExtResource("5_eds7t")
+max_value = 0.0
+max_bonus = 0.0
+temp_value = 0.0
+
+[node name="BaseBuilding" type="Node2D"]
+script = ExtResource("1_l72ex")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -22)
+texture = ExtResource("1_1svcd")
+
+[node name="ClickDetector" parent="." instance=ExtResource("2_k7ne1")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickDetector"]
+polygon = PackedVector2Array(122, 48, 122, -92, 0, -164, -122, -93, -122, 49, 0, 120)
+
+[node name="StatusComponent" parent="." instance=ExtResource("4_elhvf")]
+health = SubResource("Resource_2iiq1")
+shield = SubResource("Resource_rjdkl")
+armor = SubResource("Resource_x7cod")
+speed = SubResource("Resource_wlt8g")

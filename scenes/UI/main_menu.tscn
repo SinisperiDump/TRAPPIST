@@ -1,6 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://jg0rjuj44pe2"]
+[gd_scene load_steps=38 format=3 uid="uid://jg0rjuj44pe2"]
 
+[ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_27e12"]
 [ext_resource type="Texture2D" uid="uid://dmsord3s7iw82" path="res://assets/textures/planet/0001.png" id="1_rnf5x"]
+[ext_resource type="Texture2D" uid="uid://bueim3s5j745d" path="res://assets/textures/stars.png" id="1_xxmxf"]
 [ext_resource type="Texture2D" uid="uid://dfmni4jtkvla6" path="res://assets/textures/planet/0002.png" id="2_1q8ry"]
 [ext_resource type="Texture2D" uid="uid://dp0hrqmkg8btd" path="res://assets/textures/planet/0003.png" id="3_hodmk"]
 [ext_resource type="Texture2D" uid="uid://dslnafey10dae" path="res://assets/textures/planet/0004.png" id="4_k5xyi"]
@@ -33,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://oqaryi2orohp" path="res://assets/textures/planet/0031.png" id="31_k7yf6"]
 [ext_resource type="Texture2D" uid="uid://sl7qvm8wli82" path="res://assets/textures/planet/0032.png" id="32_du6hl"]
 [ext_resource type="Texture2D" uid="uid://cmd4pc0xm5r45" path="res://assets/textures/game_name.png" id="33_lfq40"]
+[ext_resource type="FontFile" uid="uid://bgf75lq43rbf2" path="res://assets/fonts/Audiowide-Regular.ttf" id="35_yudny"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ia0ku"]
 animations = [{
@@ -145,19 +148,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_27e12")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1440.0
+offset_bottom = -810.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+scale = Vector2(4, 4)
+texture = ExtResource("1_xxmxf")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(970, 300)
+position = Vector2(960, 300.135)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ia0ku")
 autoplay = "default"
@@ -165,7 +174,7 @@ frame_progress = 0.437834
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(974, 657)
+position = Vector2(960, 650)
 scale = Vector2(4, 4)
 texture = ExtResource("33_lfq40")
 
@@ -188,7 +197,7 @@ alignment = 1
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 6.0
+size_flags_stretch_ratio = 8.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -200,24 +209,25 @@ layout_mode = 2
 alignment = 1
 
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("35_yudny")
+theme_override_font_sizes/font_size = 48
 text = "START"
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("35_yudny")
+theme_override_font_sizes/font_size = 48
 text = "SETTINGS"
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("35_yudny")
+theme_override_font_sizes/font_size = 48
 text = "CREDITS"
-
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "QUIT"
 
 [node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
