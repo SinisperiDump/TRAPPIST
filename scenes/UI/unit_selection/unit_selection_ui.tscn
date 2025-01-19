@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://csn0fexxbmjm3"]
+
+[ext_resource type="Script" path="res://scenes/UI/unit_selection/unit_selection_ui.gd" id="1_p1r2f"]
+
+[node name="UnitSelectionUI" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_p1r2f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="SelectedContainer" type="GridContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 5

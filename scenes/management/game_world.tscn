@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://t5wvk7amkuoc"]
+[gd_scene load_steps=6 format=3 uid="uid://t5wvk7amkuoc"]
 
 [ext_resource type="Script" path="res://scenes/management/game_world.gd" id="1_lwtwu"]
 [ext_resource type="PackedScene" uid="uid://drx5xgpnxj15f" path="res://scenes/levels/debug_level.tscn" id="2_4v6ws"]
 [ext_resource type="PackedScene" uid="uid://br43gtjsq3ddf" path="res://scenes/units/temp/dummy_guy.tscn" id="3_ixbbf"]
 [ext_resource type="PackedScene" uid="uid://bhst7dqegs2b0" path="res://scenes/components/unit_dispatcher/unit_dispatcher.tscn" id="3_nvfod"]
+[ext_resource type="PackedScene" uid="uid://csn0fexxbmjm3" path="res://scenes/UI/unit_selection/unit_selection_ui.tscn" id="5_e4vsh"]
 
 [node name="GameWorld" type="Node"]
 script = ExtResource("1_lwtwu")
@@ -32,3 +33,17 @@ position = Vector2(417, 536)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UnitSelectionUI" parent="UI" node_paths=PackedStringArray("unit_dispatcher") instance=ExtResource("5_e4vsh")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+unit_dispatcher = NodePath("../../UnitDispatcher")
