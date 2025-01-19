@@ -31,7 +31,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event.is_pressed():
 				if !drag_started:
 					selection_start_pos = get_global_mouse_position()
-
 					drag_started = true
 
 			if !event.is_pressed():  # button up
@@ -55,14 +54,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			queue_redraw()
 
 
-func draw_box() -> void:
+func _draw() -> void:
 	if selection_rect.size != Vector2.ZERO:
 		draw_rect(selection_rect, Color.GREEN, false, 2, false)
 		draw_rect(selection_rect, Color(0.0, 1.0, 0.0, 0.07), true)
-
-
-func _draw() -> void:
-	draw_box()
 
 
 func push_unit(unit: Node) -> void:
@@ -104,7 +99,7 @@ func dispatch_orders() -> void:
 	# unit.move_to(mouse_position)
 	for key in selected_units:
 		# testing purposes
-		if selected_units[key].has_method("move_to"):
-			selected_units[key].move_to()
+		if selected_units[key].unit_data.unit_type != UnitDataComponent.UnitType.BUILDING:
+			selected_units[key].move_to(get_global_mouse_position())
 		else:
 			print("Add move_to function to Unit to make it move")
