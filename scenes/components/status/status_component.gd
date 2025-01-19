@@ -14,10 +14,23 @@ extends Node
 @export var speed: Stat
 
 
-func _ready() -> void:
+func init_health(new_max_value: float) -> void:
+	health.max_value = new_max_value
 	health.value = health.max_total()
+
+
+func init_shield(new_max_value: float) -> void:
+	shield.max_value = new_max_value
 	shield.value = shield.max_total()
+
+
+func init_armor(new_max_value: float) -> void:
+	armor.max_value = new_max_value
 	armor.value = armor.max_total()
+
+
+func init_speed(new_max_value: float) -> void:
+	speed.max_value = new_max_value
 	speed.value = speed.max_total()
 
 

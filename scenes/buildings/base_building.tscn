@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmide6nqcmh6e"]
+[gd_scene load_steps=11 format=3 uid="uid://bmide6nqcmh6e"]
 
 [ext_resource type="Texture2D" uid="uid://bydi55x5rdb0m" path="res://assets/textures/debug/debug_base.png" id="1_1svcd"]
 [ext_resource type="Script" path="res://scenes/buildings/base_building.gd" id="1_l72ex"]
 [ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="2_k7ne1"]
 [ext_resource type="PackedScene" uid="uid://cjat3k01e618r" path="res://scenes/components/status/status_component.tscn" id="4_elhvf"]
 [ext_resource type="Script" path="res://resources/stat.gd" id="5_eds7t"]
+[ext_resource type="PackedScene" uid="uid://cj3bfgvckkdbs" path="res://scenes/components/UnitData/unit_data_component.tscn" id="6_u1epc"]
 
 [sub_resource type="Resource" id="Resource_2iiq1"]
 script = ExtResource("5_eds7t")
@@ -48,3 +49,5 @@ health = SubResource("Resource_2iiq1")
 shield = SubResource("Resource_rjdkl")
 armor = SubResource("Resource_x7cod")
 speed = SubResource("Resource_wlt8g")
+
+[node name="UnitDataComponent" parent="." instance=ExtResource("6_u1epc")]

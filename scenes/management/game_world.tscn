@@ -30,3 +30,5 @@ position = Vector2(238, 301)
 position = Vector2(417, 536)
 
 [node name="Enemies" type="Node" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
