@@ -2,7 +2,7 @@ class_name UnitDispatcher extends Node2D
 
 signal unit_pushed(u: Node)
 signal unit_popped(u: Node)
-
+signal unit_selection_changed
 @export var selectable_units: Node
 
 var move_order_position: Vector2 = Vector2.ZERO
@@ -79,6 +79,7 @@ func unselect_units() -> void:
 	for key in selected_units:
 		pop_unit(selected_units[key])
 	selected_units = {}
+	unit_selection_changed.emit()
 
 
 func dispatch_orders() -> void:
@@ -96,6 +97,7 @@ func add_units_to_selection() -> void:
 	for unit in unit_array:
 		if selection_rect.abs().has_point(unit.global_position):
 			push_unit(unit)
+	unit_selection_changed.emit()
 
 
 func _on_single_unit_selected(unit: Node, additive: bool) -> void:
@@ -105,4 +107,4 @@ func _on_single_unit_selected(unit: Node, additive: bool) -> void:
 
 	unselect_units()
 	push_unit(unit)
-	print_debug(selected_units)
+	unit_selection_changed.emit()
