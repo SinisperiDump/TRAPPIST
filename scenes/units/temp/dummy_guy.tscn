@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://br43gtjsq3ddf"]
+[gd_scene load_steps=7 format=3 uid="uid://br43gtjsq3ddf"]
 
 [ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="1_jl5si"]
 [ext_resource type="Script" path="res://scenes/units/temp/dummy_guy.gd" id="1_su5hh"]
+[ext_resource type="PackedScene" uid="uid://cj3bfgvckkdbs" path="res://scenes/components/UnitData/unit_data_component.tscn" id="3_k8s34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4n6x"]
 size = Vector2(175, 208)
@@ -27,3 +28,7 @@ texture = SubResource("PlaceholderTexture2D_trm6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ma62e")
+
+[node name="UnitDataComponent" parent="." instance=ExtResource("3_k8s34")]
+unique_name_in_owner = true
+unit_type = 1

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var speed: float = 0.0
+@onready var unit_data: UnitDataComponent = $UnitDataComponent
 
 
 func _process(delta: float) -> void:

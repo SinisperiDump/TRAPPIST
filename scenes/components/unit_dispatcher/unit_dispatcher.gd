@@ -22,7 +22,7 @@ var drag_started: bool = false
 
 
 func _ready() -> void:
-	EventBus.unit_selected.connect(push_unit)
+	EventBus.unit_selected.connect(_on_single_unit_selected)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -87,6 +87,8 @@ func dispatch_orders() -> void:
 		# testing purposes
 		if selected_units[key].has_method("move_to"):
 			selected_units[key].move_to()
+		else:
+			print("Add move_to function to Unit to make it move")
 
 
 func add_units_to_selection() -> void:
@@ -94,4 +96,13 @@ func add_units_to_selection() -> void:
 	for unit in unit_array:
 		if selection_rect.abs().has_point(unit.global_position):
 			push_unit(unit)
-	print(selected_units)
+
+
+func _on_single_unit_selected(unit: Node, additive: bool) -> void:
+	if additive:
+		push_unit(unit)
+		return
+
+	unselect_units()
+	push_unit(unit)
+	print_debug(selected_units)

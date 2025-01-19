@@ -1,4 +1,4 @@
 extends Node
 
 signal research_completed
-signal unit_selected(unit: Node)
+signal unit_selected(unit: Node, additive: bool)
