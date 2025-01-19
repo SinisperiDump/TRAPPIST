@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://br43gtjsq3ddf"]
+
+[ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="1_jl5si"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4n6x"]
+size = Vector2(175, 208)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_trm6v"]
+size = Vector2(86, 120)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ma62e"]
+
+[node name="DummyGuy" type="CharacterBody2D"]
+
+[node name="ClickDetector" parent="." instance=ExtResource("1_jl5si")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickDetector"]
+position = Vector2(2.5, -1)
+shape = SubResource("RectangleShape2D_c4n6x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_trm6v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ma62e")

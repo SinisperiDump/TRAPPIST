@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scenes/components/unit_dispatcher/unit_dispatcher.gd" id="1_igblq"]
 
-[node name="UnitDispatcher" type="Node"]
+[node name="UnitDispatcher" type="Node2D"]
 script = ExtResource("1_igblq")
