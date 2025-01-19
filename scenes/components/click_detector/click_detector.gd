@@ -3,6 +3,8 @@ class_name ClickDetector extends Area2D
 signal click_detected
 var hovered: bool = false
 
+@export var unit: Node = null
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && hovered:
@@ -18,3 +20,4 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ready() -> void:
 	self.mouse_entered.connect(func() -> void: hovered = true)
 	self.mouse_exited.connect(func() -> void: hovered = false)
+	self.click_detected.connect(func() -> void: EventBus.unit_selected.emit(unit))

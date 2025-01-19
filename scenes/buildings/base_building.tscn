@@ -37,7 +37,8 @@ script = ExtResource("1_l72ex")
 position = Vector2(0, -22)
 texture = ExtResource("1_1svcd")
 
-[node name="ClickDetector" parent="." instance=ExtResource("2_k7ne1")]
+[node name="ClickDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("2_k7ne1")]
+unit = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickDetector"]
 polygon = PackedVector2Array(122, 48, 122, -92, 0, -164, -122, -93, -122, 49, 0, 120)

@@ -98,9 +98,8 @@ func unselect_units() -> void:
 func dispatch_orders() -> void:
 	# unit.move_to(mouse_position)
 	for key in selected_units:
-		selected_units[key].move_to()
-
-	print("dispatched order")
+		if selected_units[key].has_method("move_to"):
+			selected_units[key].move_to()
 
 
 func add_units_to_selection() -> void:
