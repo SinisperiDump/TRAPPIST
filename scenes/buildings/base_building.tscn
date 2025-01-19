@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_2iiq1"]
 script = ExtResource("5_eds7t")
-max_value = 1000.0
+max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
@@ -51,3 +51,6 @@ armor = SubResource("Resource_x7cod")
 speed = SubResource("Resource_wlt8g")
 
 [node name="UnitDataComponent" parent="." instance=ExtResource("6_u1epc")]
+unit_name = "Base"
+base_health = 1000.0
+base_armor = 5.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://hjavfhmrh2d1"]
 
 [ext_resource type="Script" path="res://scenes/management/main.gd" id="1_ds0ym"]
-[ext_resource type="PackedScene" uid="uid://jg0rjuj44pe2" path="res://scenes/UI/main_menu.tscn" id="2_v4ck4"]
+[ext_resource type="PackedScene" uid="uid://jg0rjuj44pe2" path="res://scenes/UI/main_menu/main_menu.tscn" id="2_v4ck4"]
 [ext_resource type="PackedScene" uid="uid://t5wvk7amkuoc" path="res://scenes/management/game_world.tscn" id="3_v4ymq"]
 
 [node name="Main" type="Node"]
