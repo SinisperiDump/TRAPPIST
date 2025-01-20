@@ -49,11 +49,10 @@ script = ExtResource("1_su5hh")
 
 [node name="ClickDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("1_jl5si")]
 unique_name_in_owner = true
-position = Vector2(-3, 70)
+position = Vector2(0, -34)
 unit = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickDetector"]
-position = Vector2(4, -108.25)
 shape = SubResource("RectangleShape2D_c4n6x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

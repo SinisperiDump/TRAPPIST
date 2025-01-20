@@ -8,7 +8,8 @@
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="6_8vqvl"]
 [ext_resource type="Script" path="res://scenes/management/fps_counter.gd" id="6_hbxnd"]
 
-[node name="GameWorld" type="Node"]
+[node name="GameWorld" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_lwtwu")
 start_level = ExtResource("2_4v6ws")
 
@@ -23,7 +24,8 @@ shadow_enabled = true
 z_index = 9
 selectable_units = NodePath("../Players")
 
-[node name="Levels" type="Node" parent="."]
+[node name="Levels" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Players" type="Node2D" parent="."]
 y_sort_enabled = true

@@ -148,15 +148,17 @@ temp_value = 0.0
 script = ExtResource("1_l72ex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -63)
 sprite_frames = SubResource("SpriteFrames_lrple")
 autoplay = "default"
 frame_progress = 0.31396
 
 [node name="ClickDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("2_k7ne1")]
+position = Vector2(0, -56)
 unit = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickDetector"]
+visible = false
 polygon = PackedVector2Array(122, 48, 122, -92, 0, -164, -122, -93, -122, 49, 0, 120)
 
 [node name="StatusComponent" parent="." instance=ExtResource("4_elhvf")]
@@ -169,3 +171,10 @@ speed = SubResource("Resource_wlt8g")
 unit_name = "Base"
 base_health = 1000.0
 base_armor = 5.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 61)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, -118)
+polygon = PackedVector2Array(122, 48, 1, -16, -122, 49, 0, 120)

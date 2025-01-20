@@ -39,7 +39,7 @@ func set_target(target: Vector2, speed: float) -> void:
 
 
 func do_navigation() -> void:
-	if !Utils.vec2_approx_eq(current_target, previous_target, 1.0):
+	if !Utils.vec2_approx_eq(current_target, previous_target, 0.0):
 		nav_agent.set_target_position(current_target)
 
 	var dir = nav_agent.get_next_path_position() - self.global_position
