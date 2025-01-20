@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 
 func detect_edge(delta: float) -> void:
-	direction = Vector2.ZERO
+	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var mp = get_viewport().get_mouse_position()
 
 	if mp.x <= 0.0 + drag_margin_px:
