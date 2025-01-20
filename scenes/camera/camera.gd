@@ -31,7 +31,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event.button_index == MOUSE_BUTTON_MIDDLE:
 				panning = false
 		zoom_level = clamp(zoom_level, 0.5, 2.0)
-		self.zoom = Vector2.ONE * zoom_level
 		return
 
 	if event is InputEventMouseMotion && panning:
@@ -52,3 +51,4 @@ func handle_movement(delta: float) -> void:
 		velocity = velocity.lerp(mouse_offset * panning_speed, delta * 10.0)
 		mouse_offset = Vector2.ZERO
 	self.position += velocity * delta
+	self.zoom = self.zoom.lerp(Vector2.ONE * zoom_level, delta * 10.0)
