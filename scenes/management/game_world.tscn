@@ -64,3 +64,4 @@ unit_dispatcher = NodePath("../../UnitDispatcher")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("6_8vqvl")
+drag_margin_px = 104
