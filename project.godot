@@ -20,6 +20,7 @@ config/icon="res://assets/textures/icon.svg"
 Refs="*res://scenes/management/refs.tscn"
 Utils="*res://scenes/management/utils.tscn"
 EventBus="*res://scenes/management/event_bus.gd"
+AlienManager="*res://scenes/management/alien_manager.gd"
 
 [display]
 
@@ -41,6 +42,7 @@ folder_colors={
 [global_group]
 
 unit=""
+aliens=""
 
 [input]
 

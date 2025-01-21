@@ -13,7 +13,7 @@ var main_scene: Main
 ## Node that holds all currently loaded Player Units as it's child
 @onready var players: Node = $Players
 ## Node that holds all currently loaded Enemy Units as it's child
-@onready var enemies: Node = $Enemies
+@onready var aliens: Node = $Aliens
 
 
 func _ready() -> void:

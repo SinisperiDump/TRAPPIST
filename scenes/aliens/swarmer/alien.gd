@@ -14,25 +14,23 @@ enum SpawnType { WAVE, NEST }
 
 var curr_tick: float = 0.0
 var velocity: Vector2 = Vector2.ZERO
-
-
-func _ready() -> void:
-	if target_node:
-		target_position = target_node.global_position
-	else:
-		nav_agent.set_target_position(target_node.global_position)
+var dead: bool = false
+var with_navigation: bool = false
 
 
 func _physics_process(delta: float) -> void:
-	velocity = (self.position - target_position).normalized() * 100.0 * delta
-	position += velocity
+	position += (Vector2.ZERO - self.global_position).normalized() * 300.0 * delta
+	if Utils.vec2_approx_eq(position, Vector2.ZERO, 80):
+		if !dead:
+			die()
 
 
-func respawn(_new_pos: Vector2) -> void:
-	## reset stats and position
-	pass
+func die() -> void:
+	dead = true
+	hide()
+	AlienManager.remove_alien(get_instance_id())
 
 
-func disable_everything() -> void:
-	## when we are not on screen or died
-	pass
+func revive() -> void:
+	dead = false
+	show()

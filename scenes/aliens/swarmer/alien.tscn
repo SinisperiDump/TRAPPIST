@@ -1,9 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://f5k6u1gf7rtt"]
 
 [ext_resource type="Script" path="res://scenes/aliens/swarmer/alien.gd" id="1_3gwdt"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vq6d2"]
-size = Vector2(43, 67)
+[ext_resource type="Texture2D" uid="uid://d2baaiy3p6iiv" path="res://scenes/aliens/swarmer/arrow.jpg" id="2_hxftm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dss7c"]
 size = Vector2(52, 75)
@@ -15,9 +13,9 @@ script = ExtResource("1_3gwdt")
 unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(0, -33.5)
-texture = SubResource("PlaceholderTexture2D_vq6d2")
+position = Vector2(0.5, -32.3751)
+scale = Vector2(0.21875, 0.382812)
+texture = ExtResource("2_hxftm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -34)
