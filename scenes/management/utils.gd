@@ -12,7 +12,7 @@ func _ready() -> void:
 ## Is vector approximately equal to another
 ## My implementation cause godot's doesn't allow me specify the epsilon
 func vec2_approx_eq(a: Vector2, b: Vector2, eps: float) -> bool:
-	return abs(a.x - a.x) < eps && abs(a.y - b.y) < eps
+	return abs(a.x - b.x) < eps && abs(a.y - b.y) < eps
 
 
 func choose_point_in_rad(center: Vector2, radius: float, minimum: float = 50.0) -> Vector2:
