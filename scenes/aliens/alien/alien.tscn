@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://f5k6u1gf7rtt"]
+
+[ext_resource type="Script" path="res://scenes/aliens/alien/alien.gd" id="1_7fisc"]
+[ext_resource type="Resource" uid="uid://dx2a5kqd2djr6" path="res://resources/aliens/swarmer_data.tres" id="2_5gcf5"]
+[ext_resource type="Texture2D" uid="uid://d2baaiy3p6iiv" path="res://assets/textures/debug/arrow.jpg" id="2_qjn2f"]
+[ext_resource type="Texture2D" uid="uid://caw1p3tu2ax5a" path="res://assets/textures/debug/ground.png" id="3_tlhq0"]
+[ext_resource type="Texture2D" uid="uid://bogyy2pc0rw7l" path="res://assets/textures/debug/ground2.png" id="4_ohf1o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dss7c"]
+size = Vector2(52, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj5jh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tlhq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ohf1o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Alien" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_7fisc")
+data = ExtResource("2_5gcf5")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.98023e-08, -19)
+scale = Vector2(0.21875, 0.382812)
+texture = ExtResource("2_qjn2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -34)
+shape = SubResource("RectangleShape2D_dss7c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uj5jh")

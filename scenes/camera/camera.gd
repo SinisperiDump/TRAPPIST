@@ -18,6 +18,10 @@ var mouse_moving: bool = false
 @onready var panning: bool = false
 
 
+func _ready() -> void:
+	Refs.camera = self
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	mouse_moving = false
 	if event is InputEventMouseButton:

@@ -144,7 +144,7 @@ max_value = 0.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[node name="BaseBuilding" type="Node2D"]
+[node name="BaseBuilding" type="Node2D" groups=["base"]]
 script = ExtResource("1_l72ex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

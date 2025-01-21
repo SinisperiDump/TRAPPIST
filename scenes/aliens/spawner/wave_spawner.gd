@@ -1,7 +1,6 @@
 extends Path2D
 
 @export_range(0.1, 10.0, 0.1) var spawn_rate_sec: float = 1.0
-@export var aliens: Array[PackedScene]
 @export var disabled: bool = false
 var current_tick: float = 0.0
 
@@ -21,10 +20,10 @@ func _physics_process(delta: float) -> void:
 
 
 func spawn_aliens() -> void:
-	for alien in aliens:
-		spawn_location.set_progress(randi())
-		var alien_scene: Node2D = AlienManager.create_alien()
-		if alien_scene:
-			alien_scene.revive()
-			alien_scene.position = spawn_location.position
-			alien_scene.rotation = spawn_location.rotation + PI / 2
+	spawn_location.set_progress(randi())
+	var alien_scene: Node2D = AlienManager.create_alien()
+	if alien_scene:
+		alien_scene.position = spawn_location.position
+		alien_scene.rotation = spawn_location.rotation + PI / 2
+		alien_scene.spawn_type = Alien.SpawnType.WAVE
+		alien_scene.init()

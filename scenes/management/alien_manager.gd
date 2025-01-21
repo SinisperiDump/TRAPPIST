@@ -7,13 +7,12 @@ var inactive_aliens: Array[Node2D] = []
 var ghosts: Dictionary = {}
 
 var alien_count: int = 0
-var max_alien_count: int = 10
-var alien_scene: PackedScene = preload("res://scenes/aliens/swarmer/alien.tscn")
+var max_alien_count: int = 100
+var alien_scene: PackedScene = preload("res://scenes/aliens/alien/alien.tscn")
+var swarmer_data: AlienData = preload("res://resources/aliens/swarmer_data.tres")
+var spewer_data: AlienData = preload("res://resources/aliens/spewer_data.tres")
+var jaggernaut_data: AlienData = preload("res://resources/aliens/jaggernaut_data.tres")
 var alien_holder: Node = null
-
-
-func _ready() -> void:
-	print(alien_holder)
 
 
 func create_alien() -> Node2D:
@@ -26,11 +25,13 @@ func create_alien() -> Node2D:
 			var new_alien = alien_scene.instantiate()
 			alien_holder.add_child(new_alien)
 			active_aliens[new_alien.get_instance_id()] = new_alien
+			new_alien.data = get_random_data()
 			return new_alien
 		else:
-			var res = inactive_aliens.pop_front()
-			active_aliens[res.get_instance_id()] = res
-			return res
+			var new_alien = inactive_aliens.pop_front()
+			active_aliens[new_alien.get_instance_id()] = new_alien
+			new_alien.data = get_random_data()
+			return new_alien
 	else:
 		return null
 
@@ -40,3 +41,13 @@ func remove_alien(id: int) -> void:
 	active_aliens.erase(id)
 	inactive_aliens.push_back(alien)
 	alien_count -= 1
+
+
+func get_random_data() -> AlienData:
+	var rand = randf()
+	if rand <= 0.1:
+		return jaggernaut_data
+	if rand < 0.5:
+		return spewer_data
+	else:
+		return swarmer_data
