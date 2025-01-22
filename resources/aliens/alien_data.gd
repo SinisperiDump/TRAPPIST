@@ -2,9 +2,10 @@ class_name AlienData extends Resource
 
 enum CombatType { SWARMER, SPEWER, JAGGERNAUT }
 @export var combat_type: CombatType
-@export var health: float
+@export var max_health: float
 @export var speed: float
 @export var damage: float
+
 var name: String:
 	get():
 		match combat_type:

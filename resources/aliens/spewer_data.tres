@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="AlienData" load_steps=2 format=3 uid="uid://bc2aktjodu14w"]
 
-[ext_resource type="Script" path="res://resources/alien_data.gd" id="1_gb3n0"]
+[ext_resource type="Script" path="res://resources/aliens/alien_data.gd" id="1_ufckg"]
 
 [resource]
-script = ExtResource("1_gb3n0")
-spawn_type = 0
+script = ExtResource("1_ufckg")
 combat_type = 1
-health = 150.0
+max_health = 150.0
 speed = 100.0
 damage = 10.0

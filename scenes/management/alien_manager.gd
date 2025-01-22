@@ -44,10 +44,12 @@ func remove_alien(id: int) -> void:
 
 
 func get_random_data() -> AlienData:
+	var data = null
 	var rand = randf()
 	if rand <= 0.1:
-		return jaggernaut_data
+		data = jaggernaut_data
 	if rand < 0.5:
-		return spewer_data
+		data = spewer_data
 	else:
-		return swarmer_data
+		data = swarmer_data
+	return data
