@@ -92,7 +92,7 @@ position = Vector2(2910, 1498)
 [node name="AlienSpawner" parent="." instance=ExtResource("3_26y3k")]
 position = Vector2(1491, 187)
 aliens = Array[PackedScene]([ExtResource("3_0t5uc")])
-quantity = 30
+quantity = 1
 spawn_rate_ms = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlienSpawner"]
@@ -103,3 +103,5 @@ debug_color = Color(0.995593, 0, 0.202482, 0.42)
 position = Vector2(530.93, 398.063)
 scale = Vector2(0.905326, 0.894469)
 spawn_rate_sec = 0.1
+disabled = true
+num_aliens = 156

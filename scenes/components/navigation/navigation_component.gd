@@ -26,9 +26,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
-	if Utils.vec2_approx_eq(safe_velocity, Vector2.ZERO, 10.0):
-		return
-	actor.velocity = safe_velocity
+	if Utils.vec2_approx_eq(safe_velocity, Vector2.ZERO, 0.0):
+		actor.velocity = Vector2.ZERO
+	else:
+		actor.velocity = safe_velocity
 	actor.move_and_slide()
 
 
@@ -39,7 +40,7 @@ func set_target(target: Vector2, speed: float) -> void:
 
 
 func do_navigation() -> void:
-	if !Utils.vec2_approx_eq(current_target, previous_target, 10.0):
+	if !Utils.vec2_approx_eq(current_target, previous_target, 64.0):
 		nav_agent.set_target_position(current_target)
 
 	var dir = nav_agent.get_next_path_position() - self.global_position

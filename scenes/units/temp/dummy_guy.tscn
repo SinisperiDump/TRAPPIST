@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://br43gtjsq3ddf"]
+[gd_scene load_steps=16 format=3 uid="uid://br43gtjsq3ddf"]
 
 [ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="1_jl5si"]
 [ext_resource type="Script" path="res://scenes/units/temp/dummy_guy.gd" id="1_su5hh"]
@@ -6,40 +6,48 @@
 [ext_resource type="PackedScene" uid="uid://cjat3k01e618r" path="res://scenes/components/status/status_component.tscn" id="4_tc8w2"]
 [ext_resource type="Script" path="res://resources/stat.gd" id="5_fftov"]
 [ext_resource type="PackedScene" uid="uid://bq8eccn72sxum" path="res://scenes/components/navigation/navigation_component.tscn" id="6_nl61o"]
+[ext_resource type="PackedScene" uid="uid://io3tgbgih4ad" path="res://scenes/components/alien_aggrevator/alien_aggrevator.tscn" id="7_ighp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4n6x"]
 size = Vector2(66.5, 81.5)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_trm6v"]
-size = Vector2(43, 67)
+size = Vector2(42, 64)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ma62e"]
 radius = 12.0
 height = 44.0
 
 [sub_resource type="Resource" id="Resource_wij2j"]
+resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
 [sub_resource type="Resource" id="Resource_206f4"]
+resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
 [sub_resource type="Resource" id="Resource_x0rii"]
+resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
 [sub_resource type="Resource" id="Resource_gwn5q"]
+resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_keplx"]
+radius = 227.0
 
 [node name="DummyGuy" type="CharacterBody2D"]
 collision_layer = 0
@@ -84,4 +92,13 @@ speed = SubResource("Resource_gwn5q")
 unique_name_in_owner = true
 position = Vector2(0, -1)
 actor = NodePath("..")
-tick_ms = 0.2
+tick_ms = 0.14
+
+[node name="AlienAggrevator" parent="." node_paths=PackedStringArray("aggrevation_area", "user") instance=ExtResource("7_ighp6")]
+unique_name_in_owner = true
+aggrevation_area = NodePath("CollisionShape2D")
+user = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlienAggrevator"]
+shape = SubResource("CircleShape2D_keplx")
+debug_color = Color(4.33177e-07, 0.643159, 0.305082, 0.42)

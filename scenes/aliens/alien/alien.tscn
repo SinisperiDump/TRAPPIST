@@ -2,54 +2,74 @@
 
 [ext_resource type="Script" path="res://scenes/aliens/alien/alien.gd" id="1_7fisc"]
 [ext_resource type="Resource" uid="uid://dx2a5kqd2djr6" path="res://resources/aliens/swarmer_data.tres" id="2_5gcf5"]
-[ext_resource type="Texture2D" uid="uid://d2baaiy3p6iiv" path="res://assets/textures/debug/arrow.jpg" id="2_qjn2f"]
-[ext_resource type="Texture2D" uid="uid://caw1p3tu2ax5a" path="res://assets/textures/debug/ground.png" id="3_tlhq0"]
-[ext_resource type="Texture2D" uid="uid://bogyy2pc0rw7l" path="res://assets/textures/debug/ground2.png" id="4_ohf1o"]
+[ext_resource type="Texture2D" uid="uid://cvvitkll3y60q" path="res://assets/textures/debug/alien_punch.jpg" id="3_frpui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dss7c"]
-size = Vector2(52, 75)
+size = Vector2(52, 64.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vasoh"]
+atlas = ExtResource("3_frpui")
+region = Rect2(0, 0, 42, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdbxc"]
+atlas = ExtResource("3_frpui")
+region = Rect2(42, 0, 42, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uj5jh"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_tlhq0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_ohf1o")
-}],
+"frames": [],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vasoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdbxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vasoh")
+}],
+"loop": false,
+"name": &"swarm_attack",
 "speed": 5.0
 }]
 
 [node name="Alien" type="Area2D"]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 2
+monitoring = false
 script = ExtResource("1_7fisc")
 data = ExtResource("2_5gcf5")
+chase_time = 3.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.98023e-08, -19)
-scale = Vector2(0.21875, 0.382812)
-texture = ExtResource("2_qjn2f")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -34)
+visible = false
+position = Vector2(-1, -32.04)
 shape = SubResource("RectangleShape2D_dss7c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0.423529, 1, 1)
+position = Vector2(0, -3.29)
 sprite_frames = SubResource("SpriteFrames_uj5jh")
+animation = &"swarm_attack"
+frame = 2
+frame_progress = 1.0
+offset = Vector2(0, -28.71)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 1, 1)
 offset_left = -143.0
+offset_top = -3.29
 offset_right = 145.0
-offset_bottom = 27.0
+offset_bottom = 23.71
 show_percentage = false
 
 [node name="HpLabel" type="Label" parent="ProgressBar"]

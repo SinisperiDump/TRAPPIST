@@ -16,7 +16,6 @@ var alien_holder: Node = null
 
 
 func create_alien() -> Node2D:
-	print(alien_count)
 	if alien_count < max_alien_count:
 		alien_count += 1
 		if inactive_aliens.is_empty():
