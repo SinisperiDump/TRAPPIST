@@ -84,6 +84,7 @@ func do_state(delta: float) -> void:
 	elif current_state == State.CHASE:
 		if current_chase_time >= chase_time:
 			combat_target = null
+			# disconnect from all died signals from all combat targets
 			be_idle()
 			return
 
@@ -105,11 +106,12 @@ func engage(target: Node) -> void:
 
 
 func _on_target_died() -> void:
-	combat_target.died.disconnect(_on_target_died)
-	print("should go idle")
-	be_idle()
-	current_chase_time = 0.0
-	combat_target = null
+	if combat_target:
+		combat_target.died.disconnect(_on_target_died)
+		print("should go idle")
+		be_idle()
+		current_chase_time = 0.0
+		combat_target = null
 
 
 func chase() -> void:
