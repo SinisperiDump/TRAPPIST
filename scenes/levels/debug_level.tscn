@@ -32,8 +32,8 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_djsun")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2mnpj"]
-vertices = PackedVector2Array(853.383, 1667.88, 2753.72, 1509.25, 2910.12, 1600.27, -13.7969, 3755.9, 2911.01, 1386.68, 2754.53, 1469.36, 1166.38, 1182.88, 1166.38, 601.117, 5645.53, -53.1406, 5581.68, 3720.33, 3066.33, 1508.08, 3065.41, 1468.34, 712.617, 1086.12, 712.617, 1667.88, 470.883, 1195.38, 470.883, 613.617, 685.617, 688.883, 826.383, 688.883, 826.383, 107.117, 1025.62, 601.117, 1025.62, 1182.88, 853.383, 1086.12, 685.617, 107.117, 330.117, 613.617, -90.4297, -57.0938, 330.117, 1195.38)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(10, 9, 3, 2), PackedInt32Array(12, 13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20, 21), PackedInt32Array(13, 0, 3), PackedInt32Array(6, 5, 1, 0, 20), PackedInt32Array(20, 0, 21), PackedInt32Array(17, 21, 12, 16), PackedInt32Array(22, 16, 15), PackedInt32Array(7, 19, 18), PackedInt32Array(22, 15, 23, 24), PackedInt32Array(25, 14, 13, 3), PackedInt32Array(8, 11, 4, 18), PackedInt32Array(25, 3, 24, 23), PackedInt32Array(22, 24, 8, 18), PackedInt32Array(18, 4, 7)])
+vertices = PackedVector2Array(2993.01, 1276.68, 2836.53, 1359.36, 1166.38, 1182.88, 1166.38, 601.117, 2835.72, 1399.25, 2992.12, 1490.27, -13.7969, 3755.9, 853.383, 1667.88, 5645.53, -53.1406, 5581.68, 3720.33, 3148.33, 1398.08, 3147.41, 1358.34, 712.617, 1086.12, 712.617, 1667.88, 470.883, 1195.38, 470.883, 613.617, 685.617, 688.883, 826.383, 688.883, 826.383, 107.117, 1025.62, 601.117, 1025.62, 1182.88, 853.383, 1086.12, 685.617, 107.117, 330.117, 613.617, -90.4297, -57.0938, 330.117, 1195.38)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 2), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(10, 9, 6, 5), PackedInt32Array(12, 13, 14, 15, 16), PackedInt32Array(17, 18, 19, 20, 21), PackedInt32Array(13, 7, 6), PackedInt32Array(2, 1, 4), PackedInt32Array(20, 2, 7), PackedInt32Array(20, 7, 21), PackedInt32Array(17, 21, 12, 16), PackedInt32Array(22, 16, 15), PackedInt32Array(3, 19, 18), PackedInt32Array(22, 15, 23, 24), PackedInt32Array(25, 14, 13, 6), PackedInt32Array(25, 6, 24, 23), PackedInt32Array(22, 24, 8, 18), PackedInt32Array(18, 8, 11, 0), PackedInt32Array(18, 0, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-125, -91, 5680, -87, 5615, 3754, -47, 3790)])
 agent_radius = 33.88
 
@@ -87,7 +87,7 @@ shape = SubResource("RectangleShape2D_h7np6")
 position = Vector2(3054, 1763)
 
 [node name="Base" parent="NavigationRegion2D" instance=ExtResource("2_ra1pw")]
-position = Vector2(2910, 1498)
+position = Vector2(2992, 1388)
 
 [node name="AlienSpawner" parent="." instance=ExtResource("3_26y3k")]
 position = Vector2(1491, 187)
@@ -103,3 +103,4 @@ debug_color = Color(0.995593, 0, 0.202482, 0.42)
 position = Vector2(530.93, 398.063)
 scale = Vector2(0.905326, 0.894469)
 spawn_rate_sec = 0.1
+num_aliens = 100

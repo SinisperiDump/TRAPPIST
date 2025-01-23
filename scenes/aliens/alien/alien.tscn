@@ -4,8 +4,8 @@
 [ext_resource type="Resource" uid="uid://dx2a5kqd2djr6" path="res://resources/aliens/swarmer_data.tres" id="2_5gcf5"]
 [ext_resource type="Texture2D" uid="uid://cvvitkll3y60q" path="res://assets/textures/debug/alien_punch.jpg" id="3_frpui"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dss7c"]
-size = Vector2(52, 64.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjpdf"]
+radius = 32.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vasoh"]
 atlas = ExtResource("3_frpui")
@@ -39,24 +39,15 @@ animations = [{
 
 [node name="Alien" type="Area2D"]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 0
 monitoring = false
 script = ExtResource("1_7fisc")
 data = ExtResource("2_5gcf5")
 chase_time = 3.0
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-unique_name_in_owner = true
-debug_enabled = true
-debug_use_custom = true
-debug_path_custom_color = Color(0, 1, 0, 1)
-debug_path_custom_point_size = 8.9
-debug_path_custom_line_width = 4.71
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-1, -32.04)
-shape = SubResource("RectangleShape2D_dss7c")
+position = Vector2(-1, -32.5)
+shape = SubResource("CircleShape2D_cjpdf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

@@ -7,7 +7,7 @@ var inactive_aliens: Array[Node2D] = []
 var ghosts: Dictionary = {}
 
 var alien_count: int = 0
-var max_alien_count: int = 100
+var max_alien_count: int = 500
 var alien_scene: PackedScene = preload("res://scenes/aliens/alien/alien.tscn")
 var swarmer_data: AlienData = preload("res://resources/aliens/swarmer_data.tres")
 var spewer_data: AlienData = preload("res://resources/aliens/spewer_data.tres")
