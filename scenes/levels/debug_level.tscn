@@ -103,5 +103,3 @@ debug_color = Color(0.995593, 0, 0.202482, 0.42)
 position = Vector2(530.93, 398.063)
 scale = Vector2(0.905326, 0.894469)
 spawn_rate_sec = 0.1
-disabled = true
-num_aliens = 156

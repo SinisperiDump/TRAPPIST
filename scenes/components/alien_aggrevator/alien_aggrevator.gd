@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _on_alien_entered(area: Area2D) -> void:
-	area.engage(get_parent())
+	area.engage(user)
 
 
 func _on_alien_exited(area: Area2D) -> void:

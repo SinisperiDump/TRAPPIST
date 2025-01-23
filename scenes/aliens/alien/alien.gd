@@ -6,6 +6,7 @@ enum State { IDLE, GETTING_IN_RANGE, CHASE, ATTACKING }
 @export_range(0.0, 10.0, 0.1) var chase_time: float
 var current_chase_time: float = 0.0
 #debug
+var idle_target: Vector2
 @onready var hp_bar: ProgressBar = $ProgressBar
 @onready var hp_label: Label = %HpLabel
 var t: float = 10.0
@@ -19,19 +20,31 @@ var dead: bool = false
 var combat_target: Node = null
 var spawn_position: Vector2 = Vector2.ZERO
 
+var current_target: Vector2
+var previous_target: Vector2
+
 @onready var nav_agent: NavigationAgent2D = %NavigationAgent2D
 @onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var base_position: Vector2 = get_tree().get_first_node_in_group("base").global_position
 @onready var target_position: Vector2 = self.global_position
+@onready var nav_map: RID = get_tree().root.get_world_2d().navigation_map
+
 ## navigation enabled only when spawned in the nest
+var nav_path: PackedVector2Array
 ## add visibility notifier
-## chase timer
-## do some damage to combat target
-## somehow figure out when our combat target is dead, so we can return to spawn or continue going towards base
+## + chase timer
+## + do some damage to combat target
+## + somehow figure out when our combat target is dead, so we can return to spawn or continue going towards base
+
+
+func _ready() -> void:
+	var path = NavigationServer2D.map_get_path(nav_map, self.position, base_position, true)
+	print(path)
 
 
 func _physics_process(delta: float) -> void:
 	do_state(delta)
+	handle_movement(delta)
 	DEBUG_FUN(delta)
 
 
@@ -51,9 +64,11 @@ func init() -> void:
 	hp_label.text = str(hp_bar.value) + " ---- type " + str(spawn_type) + " State: " + str(current_state)
 	match spawn_type:
 		SpawnType.WAVE:
+			idle_target = base_position
 			target_position = base_position
 			current_state = State.IDLE
 		SpawnType.NEST:
+			idle_target = self.global_position
 			target_position = self.global_position
 			spawn_position = self.global_position
 			current_state = State.IDLE
@@ -61,40 +76,46 @@ func init() -> void:
 
 
 func do_state(delta: float) -> void:
-	match current_state:
-		State.IDLE:
-			be_idle(delta)
-		State.GETTING_IN_RANGE:
-			move_to(combat_target.global_position, delta)
+	if current_state == State.IDLE:
+		be_idle()
 
-			if has_reached_target(combat_target.global_position):
-				current_state = State.ATTACKING
+	elif current_state == State.GETTING_IN_RANGE:
+		move_to(combat_target.global_position, delta)
 
-		State.CHASE:
-			current_chase_time += delta
-			move_to(combat_target.global_position, delta)
+		if has_reached_target(combat_target.global_position):
+			current_state = State.ATTACKING
 
-			if current_chase_time >= chase_time:
-				current_state = State.IDLE
+	elif current_state == State.CHASE:
+		current_chase_time += delta
+		move_to(combat_target.global_position, delta)
 
-		State.ATTACKING:
-			attack()
-		_:
-			return
+		if current_chase_time >= chase_time:
+			combat_target = null
+			current_state = State.IDLE
+
+	else:
+		attack()
 
 
 ## temporarily enable things here when get detected by palyer's unit
 func engage(target: Node) -> void:
-	target.died.connect(func() -> void: current_state = State.IDLE ; print("going idle"))
-	combat_target = target
+	if !combat_target:
+		target.died.connect(_on_target_died)
+		combat_target = target
 	current_chase_time = 0.0
-	print("going engage")
 	current_state = State.GETTING_IN_RANGE
 
 
+func _on_target_died() -> void:
+	current_state = State.IDLE
+	current_chase_time = 0.0
+	combat_target = null
+
+
 func chase() -> void:
+	if !combat_target:
+		return
 	current_state = State.CHASE
-	pass
 
 
 ## get triggered
@@ -126,13 +147,20 @@ func has_reached_target(target: Vector2) -> bool:
 	return Utils.vec2_approx_eq(position, target, 80)
 
 
-func be_idle(delta: float) -> void:
-	match spawn_type:
-		SpawnType.WAVE:
-			move_to(base_position, delta)
-		SpawnType.NEST:
-			move_to(spawn_position, delta)
+func be_idle() -> void:
+	current_target = idle_target
 
 
 func move_to(target: Vector2, delta: float) -> void:
-	position += (target - self.global_position).normalized() * data.speed * delta
+	#position += (target - self.global_position).normalized() * data.speed * delta
+	current_target = target
+
+
+func handle_movement(delta: float) -> void:
+	#return
+	if !Utils.vec2_approx_eq(current_target, previous_target, 64.0):
+		#nav_agent.set_target_position(current_target)
+		previous_target = current_target
+
+	var direction = current_target - self.global_position
+	position += direction.normalized() * data.speed * delta

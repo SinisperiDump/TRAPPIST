@@ -42,6 +42,7 @@ func set_target(target: Vector2, speed: float) -> void:
 func do_navigation() -> void:
 	if !Utils.vec2_approx_eq(current_target, previous_target, 64.0):
 		nav_agent.set_target_position(current_target)
+		previous_target = current_target
 
 	var dir = nav_agent.get_next_path_position() - self.global_position
 	var desired_velocity: Vector2 = Vector2.ZERO
@@ -49,4 +50,3 @@ func do_navigation() -> void:
 	desired_velocity.y = dir.normalized().y * (desired_speed - desired_speed / 3)
 
 	nav_agent.set_velocity(desired_velocity)
-	previous_target = current_target
