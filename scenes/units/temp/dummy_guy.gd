@@ -1,5 +1,5 @@
 extends CharacterBody2D
-signal died
+signal died(unit: Node)
 var speed: float = 330.0
 @onready var unit_data: UnitDataComponent = $UnitDataComponent
 @onready var status: StatusComponent = %StatusComponent
@@ -22,5 +22,5 @@ func take_damage(damage: float) -> void:
 
 func _on_health_zero() -> void:
 	aggrevator.disable()
-	died.emit()
+	died.emit(self)
 	hide()

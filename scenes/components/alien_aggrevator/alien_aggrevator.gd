@@ -15,7 +15,7 @@ func _on_alien_entered(area: Area2D) -> void:
 
 
 func _on_alien_exited(area: Area2D) -> void:
-	area.chase()
+	area.chase(user)
 
 
 func disable() -> void:
