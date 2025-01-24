@@ -65,6 +65,7 @@ func init() -> void:
 	else:
 		idle_target = self.global_position
 	go_idle()
+	spawn_position = self.global_position
 	show()
 
 
@@ -84,6 +85,10 @@ func do_state(delta: float) -> void:
 			# disconnect from all died signals from all combat targets
 			go_idle()
 			return
+		if !current_combat_target:
+			current_chase_time = 0.0
+			go_idle()
+			return
 
 		current_chase_time += delta
 		generate_path(current_combat_target.global_position)
@@ -97,15 +102,14 @@ func engage(target: Node) -> void:
 	combat_targets[target.get_instance_id()] = target
 	current_chase_time = 0.0
 	current_state = State.GETTING_IN_RANGE
-	if !target.died.is_connected(_on_target_died):
-		target.died.connect(_on_target_died)
+	if !target.health_zero.is_connected(_on_target_died):
+		target.health_zero.connect(_on_target_died)
 	if !current_combat_target:
 		current_combat_target = target
 
 
 func _on_target_died(target: Node) -> void:
 	if combat_targets.has(target.get_instance_id()):
-		target.died.disconnect(_on_target_died)
 		combat_targets.erase(target.get_instance_id())
 		if current_combat_target == target:
 			if combat_targets.is_empty():
@@ -121,7 +125,7 @@ func chase(target: Node) -> void:
 	if current_combat_target != target:
 		if combat_targets.has(target.get_instance_id()):
 			# forget everybody who left and are not the current combat target
-			target.died.disconnect(_on_target_died)
+			target.health_zero.disconnect(_on_target_died)
 			combat_targets.erase(target.get_instance_id())
 		return
 	current_state = State.CHASE
@@ -143,8 +147,6 @@ func has_reached_target(target: Vector2) -> bool:
 
 func go_idle() -> void:
 	%HpBar.hide()
-	for i in combat_targets:
-		combat_targets[i].died.disconnect(_on_target_died)
 	combat_targets = {}
 	current_state = State.IDLE
 	current_chase_time = 0.0

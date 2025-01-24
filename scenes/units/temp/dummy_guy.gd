@@ -1,5 +1,5 @@
 extends CharacterBody2D
-signal died(unit: Node)
+signal health_zero(unit: Node)
 signal took_damage(hp: float)
 @onready var unit_data: UnitDataComponent = $UnitDataComponent
 @onready var status: StatusComponent = %StatusComponent
@@ -61,7 +61,7 @@ func take_damage(damage: float) -> void:
 func _on_health_zero() -> void:
 	current_state = State.IDLE
 	aggrevator.disable()
-	died.emit(self)
+	health_zero.emit(self)
 	hide()
 	queue_free()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bmide6nqcmh6e"]
+[gd_scene load_steps=29 format=3 uid="uid://bmide6nqcmh6e"]
 
 [ext_resource type="Script" path="res://scenes/buildings/base_building.gd" id="1_l72ex"]
 [ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="2_k7ne1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cjat3k01e618r" path="res://scenes/components/status/status_component.tscn" id="4_elhvf"]
 [ext_resource type="Script" path="res://resources/stat.gd" id="5_eds7t"]
 [ext_resource type="PackedScene" uid="uid://cj3bfgvckkdbs" path="res://scenes/components/UnitData/unit_data_component.tscn" id="6_u1epc"]
+[ext_resource type="PackedScene" uid="uid://io3tgbgih4ad" path="res://scenes/components/alien_aggrevator/alien_aggrevator.tscn" id="7_an801"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfcoa"]
 atlas = ExtResource("2_y42sw")
@@ -144,6 +145,9 @@ max_value = 0.0
 max_bonus = 0.0
 temp_value = 0.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgvut"]
+size = Vector2(251, 156)
+
 [node name="BaseBuilding" type="Node2D" groups=["base"]]
 script = ExtResource("1_l72ex")
 
@@ -169,12 +173,27 @@ speed = SubResource("Resource_wlt8g")
 
 [node name="UnitDataComponent" parent="." instance=ExtResource("6_u1epc")]
 unit_name = "Base"
-base_health = 1000.0
+base_health = 100000.0
 base_armor = 5.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 61)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
 position = Vector2(0, -118)
 polygon = PackedVector2Array(122, 48, 1, -16, -122, 49, 0, 120)
+
+[node name="AlienAggrevator" parent="." node_paths=PackedStringArray("aggrevation_area", "user") instance=ExtResource("7_an801")]
+aggrevation_area = NodePath("CollisionShape2D")
+user = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlienAggrevator"]
+position = Vector2(3.5, -15)
+shape = SubResource("RectangleShape2D_lgvut")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -71.0
+offset_right = 79.0
+offset_bottom = 27.0

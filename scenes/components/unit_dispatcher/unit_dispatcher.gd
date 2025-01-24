@@ -62,11 +62,11 @@ func _draw() -> void:
 func push_unit(unit: Node) -> void:
 	selected_units[str(unit.get_instance_id())] = unit
 	unit_pushed.emit(unit)
-	if !unit.died.is_connected(_on_unit_died):
-		unit.died.connect(_on_unit_died)
+	if !unit.health_zero.is_connected(_on_unit_health_zero):
+		unit.health_zero.connect(_on_unit_health_zero)
 
 
-func _on_unit_died(unit: Node) -> void:
+func _on_unit_health_zero(unit: Node) -> void:
 	selected_units.erase(str(unit.get_instance_id()))
 	unit_selection_changed.emit()
 	unit_popped.emit(unit)
@@ -74,8 +74,8 @@ func _on_unit_died(unit: Node) -> void:
 
 ## Remove unit from hash map
 func pop_unit(unit: Node) -> void:
-	if unit.died.is_connected(_on_unit_died):
-		unit.died.disconnect(_on_unit_died)
+	if unit.health_zero.is_connected(_on_unit_health_zero):
+		unit.health_zero.disconnect(_on_unit_health_zero)
 	unit_selection_changed.emit()
 	unit_popped.emit(unit)
 
