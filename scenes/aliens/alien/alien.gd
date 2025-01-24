@@ -55,7 +55,7 @@ func init() -> void:
 		idle_target = base_position
 	else:
 		idle_target = self.global_position
-	be_idle()
+	go_idle()
 	show()
 
 
@@ -73,7 +73,7 @@ func do_state(delta: float) -> void:
 		if current_chase_time >= chase_time:
 			current_combat_target = null
 			# disconnect from all died signals from all combat targets
-			be_idle()
+			go_idle()
 			return
 
 		current_chase_time += delta
@@ -100,7 +100,7 @@ func _on_target_died(target: Node) -> void:
 		combat_targets.erase(target.get_instance_id())
 		if current_combat_target == target:
 			if combat_targets.is_empty():
-				be_idle()
+				go_idle()
 			else:
 				choose_combat_target()
 				current_chase_time = 0.0
@@ -129,7 +129,7 @@ func has_reached_target(target: Vector2) -> bool:
 	return Utils.vec2_approx_eq(self.global_position, target, 80)
 
 
-func be_idle() -> void:
+func go_idle() -> void:
 	for i in combat_targets:
 		combat_targets[i].died.disconnect(_on_target_died)
 		combat_targets = {}

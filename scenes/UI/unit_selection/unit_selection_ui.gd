@@ -1,7 +1,6 @@
 class_name UnitSelectionUI
 extends PanelContainer
 
-
 const UNIT_PORTRAIT = preload("res://scenes/UI/unit_selection/unit_portrait.tscn")
 @export var unit_dispatcher: UnitDispatcher
 
@@ -15,9 +14,10 @@ func _ready() -> void:
 func _update_selected() -> void:
 	_clear_grid()
 	for unit_id in unit_dispatcher.selected_units:
+		var unit = unit_dispatcher.selected_units[unit_id]
 		var new_portrait = UNIT_PORTRAIT.instantiate()
 		selected_container.add_child(new_portrait)
-		new_portrait.portrait = unit_dispatcher.selected_units[unit_id].unit_data.icon
+		new_portrait.init(unit)
 
 
 func _clear_grid() -> void:

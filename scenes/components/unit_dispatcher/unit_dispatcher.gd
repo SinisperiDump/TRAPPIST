@@ -49,9 +49,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 ## Draw 2 selection rectengles one for border, another for the background
+## border size should scale with zoom
 func _draw() -> void:
 	if selection_rect.size != Vector2.ZERO:
-		draw_rect(selection_rect, Color.GREEN, false, 2, false)
+		draw_rect(selection_rect, Color.GREEN, false, 4, false)
 		draw_rect(selection_rect, Color(0.0, 1.0, 0.0, 0.07), true)
 
 
@@ -59,10 +60,21 @@ func _draw() -> void:
 func push_unit(unit: Node) -> void:
 	selected_units[str(unit.get_instance_id())] = unit
 	unit_pushed.emit(unit)
+	if !unit.died.is_connected(_on_unit_died):
+		unit.died.connect(_on_unit_died)
+
+
+func _on_unit_died(unit: Node) -> void:
+	selected_units.erase(str(unit.get_instance_id()))
+	unit_selection_changed.emit()
+	unit_popped.emit(unit)
 
 
 ## Remove unit from hash map
 func pop_unit(unit: Node) -> void:
+	if unit.died.is_connected(_on_unit_died):
+		unit.died.disconnect(_on_unit_died)
+	unit_selection_changed.emit()
 	unit_popped.emit(unit)
 
 

@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://llehib3ag4t3"]
+[gd_scene load_steps=6 format=3 uid="uid://llehib3ag4t3"]
 
 [ext_resource type="Script" path="res://scenes/UI/unit_selection/unit_portrait.gd" id="1_sihgh"]
+
+[sub_resource type="Gradient" id="Gradient_1gabk"]
+colors = PackedColorArray(0.431373, 0.431373, 0.431373, 1, 0.43134, 0.43134, 0.43134, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i68pa"]
+gradient = SubResource("Gradient_1gabk")
+width = 46
+
+[sub_resource type="Gradient" id="Gradient_g6uex"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5j1g1"]
+gradient = SubResource("Gradient_g6uex")
+width = 46
 
 [node name="UnitPortrait" type="PanelContainer"]
 custom_minimum_size = Vector2(50, 50)
@@ -22,3 +36,14 @@ color = Color(0.484451, 0.670377, 0.672843, 1)
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+size_flags_vertical = 8
+step = 0.1
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_i68pa")
+texture_progress = SubResource("GradientTexture1D_5j1g1")

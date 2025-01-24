@@ -1,5 +1,6 @@
 extends CharacterBody2D
 signal died(unit: Node)
+signal took_damage(hp: float)
 var speed: float = 330.0
 @onready var unit_data: UnitDataComponent = $UnitDataComponent
 @onready var status: StatusComponent = %StatusComponent
@@ -18,6 +19,7 @@ func move_to(pos: Vector2) -> void:
 
 func take_damage(damage: float) -> void:
 	status.take_damage(damage)
+	took_damage.emit(status.health.value)
 
 
 func _on_health_zero() -> void:
