@@ -48,7 +48,6 @@ func get_in_range(pos: Vector2) -> void:
 
 func attack() -> void:
 	if current_combat_target:
-		print("is connected ", current_combat_target.died.is_connected(_on_alien_killed))
 		current_combat_target.take_damage(unit_data.base_damage)
 	else:
 		current_state = State.IDLE
@@ -116,12 +115,6 @@ func _on_alien_killed(alien: Node) -> void:
 	alien.died.disconnect(_on_alien_killed)
 	combat_targets.erase(alien.get_instance_id())
 	if alien == current_combat_target:
-		print("change target")
 		pick_combat_target()
-		if current_combat_target:
-			if current_combat_target.dead:
-				print("chosen target is dead")
-		else:
-			print("nobody to attack")
 	if !current_combat_target:
 		current_state = State.IDLE

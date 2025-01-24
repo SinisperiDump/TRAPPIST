@@ -44,7 +44,6 @@ func _physics_process(delta: float) -> void:
 ## disable and reset maximum amount of stuff here
 func die() -> void:
 	%HpBar.hide()
-	print("alien died")
 	go_idle()
 	died.emit(self)
 	current_combat_target = null
