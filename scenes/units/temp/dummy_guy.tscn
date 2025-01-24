@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://io3tgbgih4ad" path="res://scenes/components/alien_aggrevator/alien_aggrevator.tscn" id="7_ighp6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4n6x"]
-size = Vector2(66.5, 81.5)
+size = Vector2(33, 44.75)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_trm6v"]
 size = Vector2(42, 64)
@@ -19,28 +19,28 @@ size = Vector2(42, 64)
 radius = 12.0
 height = 44.0
 
-[sub_resource type="Resource" id="Resource_1qchi"]
+[sub_resource type="Resource" id="Resource_quvca"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[sub_resource type="Resource" id="Resource_kwsi6"]
+[sub_resource type="Resource" id="Resource_a6m37"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[sub_resource type="Resource" id="Resource_ksiu6"]
+[sub_resource type="Resource" id="Resource_f7wwq"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[sub_resource type="Resource" id="Resource_ofepn"]
+[sub_resource type="Resource" id="Resource_nvej6"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
@@ -62,10 +62,12 @@ position = Vector2(0, -34)
 unit = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickDetector"]
+position = Vector2(-0.5, 18.375)
 shape = SubResource("RectangleShape2D_c4n6x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(9.53674e-07, -2.98023e-08)
+scale = Vector2(0.52381, 0.54625)
 texture = SubResource("PlaceholderTexture2D_trm6v")
 offset = Vector2(0, -33.04)
 
@@ -81,14 +83,15 @@ icon = ExtResource("4_yhvki")
 base_health = 100.0
 base_armor = 100.0
 base_shield = 100.0
-base_speed = 300.0
+base_speed = 100.0
+base_damage = 50.0
 
 [node name="StatusComponent" parent="." instance=ExtResource("4_tc8w2")]
 unique_name_in_owner = true
-health = SubResource("Resource_1qchi")
-shield = SubResource("Resource_kwsi6")
-armor = SubResource("Resource_ksiu6")
-speed = SubResource("Resource_ofepn")
+health = SubResource("Resource_quvca")
+shield = SubResource("Resource_a6m37")
+armor = SubResource("Resource_f7wwq")
+speed = SubResource("Resource_nvej6")
 
 [node name="NavigationComponent" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("6_nl61o")]
 unique_name_in_owner = true
@@ -102,5 +105,6 @@ aggrevation_area = NodePath("CollisionShape2D")
 user = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlienAggrevator"]
+position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_keplx")
 debug_color = Color(4.33177e-07, 0.643159, 0.305082, 0.42)

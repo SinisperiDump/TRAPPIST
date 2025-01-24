@@ -7,7 +7,6 @@ class_name NavigationComponent extends Node2D
 
 @onready var current_target: Vector2 = self.global_position
 @onready var previous_target: Vector2 = self.global_position
-
 var ticks: float = 0.0
 
 var desired_speed: float = 0.0
@@ -26,7 +25,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
-	if Utils.vec2_approx_eq(safe_velocity, Vector2.ZERO, 0.0):
+	if Utils.vec2_approx_eq(safe_velocity, Vector2.ZERO, 2.0):
 		actor.velocity = Vector2.ZERO
 	else:
 		actor.velocity = safe_velocity

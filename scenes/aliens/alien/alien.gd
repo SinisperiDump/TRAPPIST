@@ -2,6 +2,7 @@ class_name Alien extends Area2D
 
 enum SpawnType { WAVE, NEST }
 enum State { IDLE, GETTING_IN_RANGE, CHASE, ATTACKING }
+signal died(alien: Node)
 @export var data: AlienData = null
 @export_range(0.0, 10.0, 0.1) var chase_time: float
 var current_chase_time: float = 0.0
@@ -42,15 +43,24 @@ func _physics_process(delta: float) -> void:
 
 ## disable and reset maximum amount of stuff here
 func die() -> void:
+	%HpBar.hide()
+	print("alien died")
+	go_idle()
+	died.emit(self)
+	current_combat_target = null
 	hide()
 	dead = true
 	rotation_degrees = 0.0
+	$CollisionShape2D.disabled = true
 	AlienManager.remove_alien(get_instance_id())
 
 
 func init() -> void:
-	dead = false
+	$CollisionShape2D.disabled = false
+	%HpBar.max_value = data.max_health
+	%HpBar.value = data.max_health
 	current_health = data.max_health
+	dead = false
 	if spawn_type == SpawnType.WAVE:
 		idle_target = base_position
 	else:
@@ -121,8 +131,11 @@ func chase(target: Node) -> void:
 ## get triggered
 func attack() -> void:
 	## play certain animation
-	sprite.play("swarm_attack")
-	current_combat_target.take_damage(10)
+	if current_combat_target:
+		sprite.play("swarm_attack")
+		await sprite.animation_finished
+		if current_combat_target:
+			current_combat_target.take_damage(10)
 
 
 func has_reached_target(target: Vector2) -> bool:
@@ -130,9 +143,10 @@ func has_reached_target(target: Vector2) -> bool:
 
 
 func go_idle() -> void:
+	%HpBar.hide()
 	for i in combat_targets:
 		combat_targets[i].died.disconnect(_on_target_died)
-		combat_targets = {}
+	combat_targets = {}
 	current_state = State.IDLE
 	current_chase_time = 0.0
 	current_combat_target = null
@@ -165,6 +179,17 @@ func handle_movement(delta: float) -> void:
 
 
 func choose_combat_target() -> void:
-	for target in combat_targets:
-		current_combat_target = combat_targets[target]
+	if combat_targets.size():
+		for target in combat_targets:
+			current_combat_target = combat_targets[target]
 		return
+	current_combat_target = null
+
+
+func take_damage(damage: float) -> void:
+	if !dead:
+		current_health -= damage
+		%HpBar.show()
+		%HpBar.value = current_health
+		if current_health <= 0.0:
+			die()

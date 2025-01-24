@@ -17,6 +17,7 @@ var drag_started: bool = false
 
 func _ready() -> void:
 	EventBus.unit_selected.connect(_on_single_unit_selected)
+	EventBus.unit_order_created.connect(dispatch_order)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -35,9 +36,10 @@ func _unhandled_input(event: InputEvent) -> void:
 					selection_rect = Rect2(0.0, 0.0, 0.0, 0.0)
 					queue_redraw()
 
-		if event.button_index == MOUSE_BUTTON_RIGHT && !event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed():
 			if !selected_units.is_empty():
-				dispatch_orders()
+				var order = Order.new(get_global_mouse_position(), Order.MOVE)
+				dispatch_order(order)
 
 	if event is InputEventMouseMotion:
 		if drag_started:
@@ -107,15 +109,11 @@ func _on_single_unit_selected(unit: Node, additive: bool) -> void:
 	unit_selection_changed.emit()
 
 
-## Send move order to selected units if they are not a building and can walk
-func dispatch_orders() -> void:
-	# unit.move_to(mouse_position)
-	var temp: Vector2 = get_global_mouse_position()
+func dispatch_order(o: Order) -> void:
+	var temp: Vector2 = o.position
+
 	for key in selected_units:
-		# testing purposes
-		if selected_units[key].unit_data.unit_type != UnitDataComponent.UnitType.BUILDING:
-			var order_pos = temp
-			selected_units[key].move_to(order_pos)
-			temp = Utils.choose_point_in_rad(order_pos, 100, 100)
-		else:
-			print("Add move_to function to Unit to make it move")
+		if selected_units[key].unit_data.unit_type != UnitDataComponent.UnitType.BUILDING && selected_units[key].unit_data.unit_type != UnitDataComponent.UnitType.RESOURCE:
+			o.position = temp
+			temp = Utils.choose_point_in_rad(o.position, 100, 100)
+			selected_units[key].execute_order(o)

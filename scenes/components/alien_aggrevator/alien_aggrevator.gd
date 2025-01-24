@@ -11,11 +11,13 @@ func _ready() -> void:
 
 
 func _on_alien_entered(area: Area2D) -> void:
-	area.engage(user)
+	if area is Alien:
+		area.engage(user)
 
 
 func _on_alien_exited(area: Area2D) -> void:
-	area.chase(user)
+	if area is Alien:
+		area.chase(user)
 
 
 func disable() -> void:

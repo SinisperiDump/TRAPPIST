@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://f5k6u1gf7rtt"]
+[gd_scene load_steps=9 format=3 uid="uid://f5k6u1gf7rtt"]
 
 [ext_resource type="Script" path="res://scenes/aliens/alien/alien.gd" id="1_7fisc"]
-[ext_resource type="Resource" uid="uid://dx2a5kqd2djr6" path="res://resources/aliens/swarmer_data.tres" id="2_5gcf5"]
 [ext_resource type="Texture2D" uid="uid://cvvitkll3y60q" path="res://assets/textures/debug/alien_punch.jpg" id="3_frpui"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cjpdf"]
-radius = 32.0
+radius = 21.006
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vasoh"]
 atlas = ExtResource("3_frpui")
@@ -37,24 +36,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_7neo7"]
+colors = PackedColorArray(1, 0, 0, 1, 0.645551, 2.56296e-06, 4.81307e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wjhvx"]
+gradient = SubResource("Gradient_7neo7")
+
 [node name="Alien" type="Area2D"]
 collision_layer = 8
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_7fisc")
-data = ExtResource("2_5gcf5")
 chase_time = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -32.5)
+position = Vector2(-1, -18)
 shape = SubResource("CircleShape2D_cjpdf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 modulate = Color(1, 0.423529, 1, 1)
-position = Vector2(0, -3.29)
+position = Vector2(0, -2)
+scale = Vector2(0.595238, 0.484375)
 sprite_frames = SubResource("SpriteFrames_uj5jh")
 animation = &"swarm_attack"
 frame = 2
 frame_progress = 1.0
 offset = Vector2(0, -28.71)
+
+[node name="HpBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -20.0
+offset_top = -48.0
+offset_right = 20.0
+offset_bottom = -44.0
+value = 38.0
+fill_mode = 6
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_wjhvx")

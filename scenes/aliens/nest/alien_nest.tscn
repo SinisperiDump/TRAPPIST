@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://sm1q8b8sfvsc"]
+[gd_scene load_steps=9 format=3 uid="uid://sm1q8b8sfvsc"]
 
+[ext_resource type="Script" path="res://scenes/aliens/nest/alien_nest.gd" id="1_4pdx8"]
 [ext_resource type="PackedScene" uid="uid://cjat3k01e618r" path="res://scenes/components/status/status_component.tscn" id="1_w4sji"]
+[ext_resource type="PackedScene" uid="uid://cj3bfgvckkdbs" path="res://scenes/components/UnitData/unit_data_component.tscn" id="2_udxlp"]
+[ext_resource type="Script" path="res://scenes/components/click_detector/click_detector.gd" id="3_wjek7"]
 
 [sub_resource type="Gradient" id="Gradient_3t1sd"]
 offsets = PackedFloat32Array(0.552174, 0.586957)
@@ -8,21 +11,36 @@ colors = PackedColorArray(1, 0.439216, 0.454902, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_i4vpo"]
 gradient = SubResource("Gradient_3t1sd")
-width = 228
-height = 228
+width = 256
+height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_je3px"]
-radius = 93.086
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_368py"]
+size = Vector2(212, 212)
 
-[node name="AlienNest" type="StaticBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ull5o"]
+radius = 105.38
+
+[node name="AlienNest" type="StaticBody2D" node_paths=PackedStringArray("unit_data")]
+script = ExtResource("1_4pdx8")
+unit_data = NodePath("UnitDataComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_i4vpo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_je3px")
+shape = SubResource("RectangleShape2D_368py")
 
 [node name="StatusComponent" parent="." instance=ExtResource("1_w4sji")]
+
+[node name="UnitDataComponent" parent="." instance=ExtResource("2_udxlp")]
+is_enemy = true
+
+[node name="ClickDetector" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
+script = ExtResource("3_wjek7")
+unit = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickDetector"]
+shape = SubResource("CircleShape2D_ull5o")

@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 func spawn_alien() -> void:
 	var alien: Alien = AlienManager.create_alien()
 	if alien:
-		var spawn_location = Utils.choose_point_in_rad(self.global_position, radius, not_spawn_radius)
+		var spawn_location = Utils.choose_point_in_rad(spawn_area.global_position, radius, not_spawn_radius)
 		alien.global_position = spawn_location
 		alien.spawn_type = Alien.SpawnType.NEST
 		alien.init()
