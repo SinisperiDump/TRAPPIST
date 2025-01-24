@@ -54,7 +54,7 @@ func _unhandled_input(event: InputEvent) -> void:
 ## border size should scale with zoom
 func _draw() -> void:
 	if selection_rect.size != Vector2.ZERO:
-		draw_rect(selection_rect, Color.GREEN, false, 4, false)
+		draw_rect(selection_rect, Color.GREEN, false, 2 * (3 - Refs.camera.zoom.x), true)
 		draw_rect(selection_rect, Color(0.0, 1.0, 0.0, 0.07), true)
 
 

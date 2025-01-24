@@ -76,6 +76,8 @@ move_left={
 2d_physics/layer_3="alien_weapon"
 2d_physics/layer_4="alien"
 2d_physics/layer_5="alien_nest"
+2d_physics/layer_6="deposit"
+2d_physics/layer_7="unit"
 2d_physics/layer_9="mouse_input"
 
 [rendering]

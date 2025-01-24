@@ -5,9 +5,12 @@ signal took_damage(hp: float)
 @onready var status: StatusComponent = %StatusComponent
 @onready var navigation: NavigationComponent = %NavigationComponent
 @onready var aggrevator: Area2D = %AlienAggrevator
-
+@onready var click_detector: ClickDetector = %ClickDetector
 enum State { IDLE, MOVING, ATTACKING }
+var inventory: Dictionary = {}
 var current_state: State
+var current_order: Order
+var prev_order: Order
 var nav_target: Vector2
 
 var combat_targets: Dictionary = {}
@@ -18,6 +21,9 @@ var curr_attack: float = 0.0
 
 
 func _ready() -> void:
+	click_detector.left_click_detected.connect(func() -> void: EventBus.unit_selected.emit(self, false))
+	click_detector.ctrl_click_detected.connect(func() -> void: EventBus.unit_selected.emit(self, true))
+
 	status.init_stats(unit_data.get_base_stats())
 	status.health.value_zero.connect(_on_health_zero)
 	aggrevator.area_entered.connect(_on_alien_spotted)
@@ -39,6 +45,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func move_to(pos: Vector2) -> void:
+	nav_target = pos
 	navigation.set_target(pos, status.speed.value)
 
 
@@ -67,7 +74,8 @@ func _on_health_zero() -> void:
 
 
 func execute_order(order: Order) -> void:
-	nav_target = order.position
+	prev_order = current_order
+	current_order = order
 	match order.type:
 		## currently they are the same
 		## potentially add patroling order etc
@@ -77,6 +85,10 @@ func execute_order(order: Order) -> void:
 		Order.ATTACK:
 			current_state = State.MOVING
 			move_to(order.position)
+		Order.GATHER:
+			current_state = State.MOVING
+			move_to(order.position)
+
 	pass
 
 

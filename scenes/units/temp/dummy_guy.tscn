@@ -19,28 +19,28 @@ size = Vector2(42, 64)
 radius = 12.0
 height = 44.0
 
-[sub_resource type="Resource" id="Resource_quvca"]
+[sub_resource type="Resource" id="Resource_1klb0"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[sub_resource type="Resource" id="Resource_a6m37"]
+[sub_resource type="Resource" id="Resource_iv81q"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[sub_resource type="Resource" id="Resource_f7wwq"]
+[sub_resource type="Resource" id="Resource_dt6g8"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[sub_resource type="Resource" id="Resource_nvej6"]
+[sub_resource type="Resource" id="Resource_0a4q1"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
@@ -51,15 +51,14 @@ temp_value = 0.0
 radius = 227.0
 
 [node name="DummyGuy" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 64
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_su5hh")
 
-[node name="ClickDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("1_jl5si")]
+[node name="ClickDetector" parent="." instance=ExtResource("1_jl5si")]
 unique_name_in_owner = true
 position = Vector2(0, -34)
-unit = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickDetector"]
 position = Vector2(-0.5, 18.375)
@@ -83,15 +82,15 @@ icon = ExtResource("4_yhvki")
 base_health = 100.0
 base_armor = 100.0
 base_shield = 100.0
-base_speed = 100.0
+base_speed = 400.0
 base_damage = 50.0
 
 [node name="StatusComponent" parent="." instance=ExtResource("4_tc8w2")]
 unique_name_in_owner = true
-health = SubResource("Resource_quvca")
-shield = SubResource("Resource_a6m37")
-armor = SubResource("Resource_f7wwq")
-speed = SubResource("Resource_nvej6")
+health = SubResource("Resource_1klb0")
+shield = SubResource("Resource_iv81q")
+armor = SubResource("Resource_dt6g8")
+speed = SubResource("Resource_0a4q1")
 
 [node name="NavigationComponent" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("6_nl61o")]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bmide6nqcmh6e"]
+[gd_scene load_steps=30 format=3 uid="uid://bmide6nqcmh6e"]
 
 [ext_resource type="Script" path="res://scenes/buildings/base_building.gd" id="1_l72ex"]
 [ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="2_k7ne1"]
@@ -148,6 +148,9 @@ temp_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgvut"]
 size = Vector2(251, 156)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v3dla"]
+radius = 169.169
+
 [node name="BaseBuilding" type="Node2D" groups=["base"]]
 script = ExtResource("1_l72ex")
 
@@ -157,9 +160,8 @@ sprite_frames = SubResource("SpriteFrames_lrple")
 autoplay = "default"
 frame_progress = 0.31396
 
-[node name="ClickDetector" parent="." node_paths=PackedStringArray("unit") instance=ExtResource("2_k7ne1")]
+[node name="ClickDetector" parent="." instance=ExtResource("2_k7ne1")]
 position = Vector2(0, -56)
-unit = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickDetector"]
 visible = false
@@ -197,3 +199,12 @@ unique_name_in_owner = true
 offset_left = -71.0
 offset_right = 79.0
 offset_bottom = 27.0
+
+[node name="UnitDetectionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnitDetectionArea"]
+shape = SubResource("CircleShape2D_v3dla")
+debug_color = Color(0.339709, 0.486147, 1, 0.42)

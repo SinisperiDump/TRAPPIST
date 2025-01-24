@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://drx5xgpnxj15f"]
+[gd_scene load_steps=15 format=4 uid="uid://drx5xgpnxj15f"]
 
 [ext_resource type="Texture2D" uid="uid://bogyy2pc0rw7l" path="res://assets/textures/debug/ground2.png" id="1_esvov"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nn2d2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dtls62wl2wp4q" path="res://scenes/aliens/spawner/wave_spawner.tscn" id="5_5p1ip"]
 [ext_resource type="PackedScene" uid="uid://sm1q8b8sfvsc" path="res://scenes/aliens/nest/alien_nest.tscn" id="5_whsb6"]
 [ext_resource type="PackedScene" uid="uid://bn46hb2fjckqq" path="res://scenes/buildings/barracks/barracks.tscn" id="6_nxjgk"]
+[ext_resource type="PackedScene" uid="uid://bnabubt0aw0ey" path="res://scenes/environment/resource_deposits/radioactive_mat/radioactive_mat.tscn" id="9_y5yww"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_djsun"]
 texture = ExtResource("1_esvov")
@@ -52,6 +53,7 @@ script = ExtResource("1_nn2d2")
 position = Vector2(530.93, 398.063)
 scale = Vector2(0.905326, 0.894469)
 spawn_rate_sec = 0.1
+disabled = true
 num_aliens = 500
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -85,3 +87,6 @@ debug_color = Color(0.995593, 0, 0.202482, 0.42)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/AlienNest/AlienSpawner"]
 shape = SubResource("CircleShape2D_7qsdu")
 debug_color = Color(0.431135, 0.457641, 1, 0.42)
+
+[node name="RadioactiveMaterial" parent="." instance=ExtResource("9_y5yww")]
+position = Vector2(2651, 1059)
