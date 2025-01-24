@@ -21,6 +21,7 @@ Refs="*res://scenes/management/refs.tscn"
 Utils="*res://scenes/management/utils.tscn"
 EventBus="*res://scenes/management/event_bus.gd"
 AlienManager="*res://scenes/management/alien_manager.gd"
+GameData="*res://scenes/management/game_data.gd"
 
 [display]
 

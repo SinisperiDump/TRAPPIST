@@ -1,5 +1,4 @@
 extends Node
-
 var active_aliens: Dictionary = {}
 var inactive_aliens: Array[Node2D] = []
 

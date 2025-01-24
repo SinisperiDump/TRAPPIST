@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://sm1q8b8sfvsc"]
+[gd_scene load_steps=14 format=3 uid="uid://sm1q8b8sfvsc"]
 
 [ext_resource type="Script" path="res://scenes/aliens/nest/alien_nest.gd" id="1_4pdx8"]
 [ext_resource type="PackedScene" uid="uid://cjat3k01e618r" path="res://scenes/components/status/status_component.tscn" id="1_w4sji"]
 [ext_resource type="PackedScene" uid="uid://cj3bfgvckkdbs" path="res://scenes/components/UnitData/unit_data_component.tscn" id="2_udxlp"]
+[ext_resource type="Script" path="res://resources/stat.gd" id="3_hhguo"]
 [ext_resource type="Script" path="res://scenes/components/click_detector/click_detector.gd" id="3_wjek7"]
 
 [sub_resource type="Gradient" id="Gradient_3t1sd"]
@@ -20,12 +21,39 @@ fill_to = Vector2(1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_368py"]
 size = Vector2(212, 212)
 
+[sub_resource type="Resource" id="Resource_cljbq"]
+script = ExtResource("3_hhguo")
+max_value = 100.0
+max_bonus = 0.0
+temp_value = 0.0
+
+[sub_resource type="Resource" id="Resource_aalm0"]
+script = ExtResource("3_hhguo")
+max_value = 1.0
+max_bonus = 0.0
+temp_value = 0.0
+
+[sub_resource type="Resource" id="Resource_yamid"]
+script = ExtResource("3_hhguo")
+max_value = 1.0
+max_bonus = 0.0
+temp_value = 0.0
+
+[sub_resource type="Resource" id="Resource_chewm"]
+script = ExtResource("3_hhguo")
+max_value = 0.0
+max_bonus = 0.0
+temp_value = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ull5o"]
 radius = 105.38
 
-[node name="AlienNest" type="StaticBody2D" node_paths=PackedStringArray("unit_data")]
+[node name="AlienNest" type="StaticBody2D" node_paths=PackedStringArray("unit_data", "status")]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_4pdx8")
 unit_data = NodePath("UnitDataComponent")
+status = NodePath("StatusComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_i4vpo")
@@ -34,9 +62,14 @@ texture = SubResource("GradientTexture2D_i4vpo")
 shape = SubResource("RectangleShape2D_368py")
 
 [node name="StatusComponent" parent="." instance=ExtResource("1_w4sji")]
+health = SubResource("Resource_cljbq")
+shield = SubResource("Resource_aalm0")
+armor = SubResource("Resource_yamid")
+speed = SubResource("Resource_chewm")
 
 [node name="UnitDataComponent" parent="." instance=ExtResource("2_udxlp")]
 is_enemy = true
+base_health = 100.0
 
 [node name="ClickDetector" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
 script = ExtResource("3_wjek7")

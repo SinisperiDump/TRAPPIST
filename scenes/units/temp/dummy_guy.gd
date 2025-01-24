@@ -99,8 +99,14 @@ func _on_alien_lost(area: Area2D) -> void:
 		pick_combat_target()
 
 
-func _on_nest_spotted(_body: Node) -> void:
+func _on_nest_spotted(nest: Node) -> void:
+	move_to(self.global_position)
 	current_state = State.ATTACKING
+	combat_targets[nest.get_instance_id()] = nest
+	if !nest.destroyed.is_connected(_on_nest_destroyed):
+		nest.destroyed.connect(_on_nest_destroyed)
+	if !current_combat_target:
+		pick_combat_target()
 
 
 func pick_combat_target() -> void:
@@ -115,6 +121,15 @@ func _on_alien_killed(alien: Node) -> void:
 	alien.died.disconnect(_on_alien_killed)
 	combat_targets.erase(alien.get_instance_id())
 	if alien == current_combat_target:
+		pick_combat_target()
+	if !current_combat_target:
+		current_state = State.IDLE
+
+
+func _on_nest_destroyed(nest: Node) -> void:
+	nest.destroyed.disconnect(_on_nest_destroyed)
+	combat_targets.erase(nest.get_instance_id())
+	if nest == current_combat_target:
 		pick_combat_target()
 	if !current_combat_target:
 		current_state = State.IDLE
