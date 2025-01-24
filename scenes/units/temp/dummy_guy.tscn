@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://br43gtjsq3ddf"]
+[gd_scene load_steps=17 format=3 uid="uid://br43gtjsq3ddf"]
 
 [ext_resource type="PackedScene" uid="uid://bfptufv4cyhhx" path="res://scenes/components/click_detector/click_detector.tscn" id="1_jl5si"]
 [ext_resource type="Script" path="res://scenes/units/temp/dummy_guy.gd" id="1_su5hh"]
 [ext_resource type="PackedScene" uid="uid://cj3bfgvckkdbs" path="res://scenes/components/UnitData/unit_data_component.tscn" id="3_k8s34"]
 [ext_resource type="PackedScene" uid="uid://cjat3k01e618r" path="res://scenes/components/status/status_component.tscn" id="4_tc8w2"]
+[ext_resource type="Texture2D" uid="uid://dg6ao4vhdj5dd" path="res://assets/textures/debug/debug_portrait.png" id="4_yhvki"]
 [ext_resource type="Script" path="res://resources/stat.gd" id="5_fftov"]
 [ext_resource type="PackedScene" uid="uid://bq8eccn72sxum" path="res://scenes/components/navigation/navigation_component.tscn" id="6_nl61o"]
 [ext_resource type="PackedScene" uid="uid://io3tgbgih4ad" path="res://scenes/components/alien_aggrevator/alien_aggrevator.tscn" id="7_ighp6"]
@@ -76,6 +77,7 @@ shape = SubResource("CapsuleShape2D_ma62e")
 [node name="UnitDataComponent" parent="." instance=ExtResource("3_k8s34")]
 unique_name_in_owner = true
 unit_type = 1
+icon = ExtResource("4_yhvki")
 base_health = 100.0
 base_armor = 100.0
 base_shield = 100.0

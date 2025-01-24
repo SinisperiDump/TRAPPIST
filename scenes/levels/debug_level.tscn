@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://drx5xgpnxj15f"]
+[gd_scene load_steps=14 format=4 uid="uid://drx5xgpnxj15f"]
 
 [ext_resource type="Texture2D" uid="uid://bogyy2pc0rw7l" path="res://assets/textures/debug/ground2.png" id="1_esvov"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nn2d2"]
@@ -41,7 +41,10 @@ agent_radius = 33.88
 size = Vector2(73, 514)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uemic"]
-radius = 253.024
+radius = 228.002
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qsdu"]
+radius = 198.023
 
 [node name="DebugLevel" type="Node2D"]
 y_sort_enabled = true
@@ -89,18 +92,25 @@ position = Vector2(3054, 1763)
 [node name="Base" parent="NavigationRegion2D" instance=ExtResource("2_ra1pw")]
 position = Vector2(2992, 1388)
 
-[node name="AlienSpawner" parent="." instance=ExtResource("3_26y3k")]
+[node name="AlienSpawner" parent="." node_paths=PackedStringArray("spawn_area", "not_spawn_area") instance=ExtResource("3_26y3k")]
 position = Vector2(1491, 187)
 aliens = Array[PackedScene]([ExtResource("3_0t5uc")])
-quantity = 1
+quantity = 51
 spawn_rate_ms = 0.1
+spawn_area = NodePath("CollisionShape2D")
+not_spawn_area = NodePath("CollisionShape2D2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlienSpawner"]
 shape = SubResource("CircleShape2D_uemic")
 debug_color = Color(0.995593, 0, 0.202482, 0.42)
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AlienSpawner"]
+shape = SubResource("CircleShape2D_7qsdu")
+debug_color = Color(0.431135, 0.457641, 1, 0.42)
+
 [node name="WaveSpawner" parent="." instance=ExtResource("5_5p1ip")]
 position = Vector2(530.93, 398.063)
 scale = Vector2(0.905326, 0.894469)
 spawn_rate_sec = 0.1
+disabled = true
 num_aliens = 500
