@@ -38,10 +38,11 @@ func _on_being_destroyed() -> void:
 func _on_unit_entered(unit: Node) -> void:
 	if unit.current_order && unit.current_order.type == Order.GATHER:
 		if !unit.inventory.is_empty():
+			print(unit.inventory.ore_type)
 			match unit.inventory.ore_type:
 				Ore.Type.RADIOACTIVE_MAT:
 					rad += unit.inventory.quantity
 				_:
 					metal += unit.inventory.quantity
 			prints("rad", rad, "met", metal)
-			EventBus.unit_order_created.emit(unit.prev_order)
+			unit.execute_order(unit.prev_order)

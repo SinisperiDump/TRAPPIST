@@ -20,5 +20,6 @@ func _on_unit_entered(unit: Node) -> void:
 	if unit.current_order:
 		if unit.current_order.type == Order.GATHER:
 			var order = Order.new(base_position, Order.GATHER)
-			unit.inventory = {"ore_type": ore, "quantity": 1}
-			EventBus.unit_order_created.emit(order)
+			unit.inventory = {"ore_type": ore.type, "quantity": 1}
+			## needs to be executed by guys currently employed here
+			unit.execute_order(order)
