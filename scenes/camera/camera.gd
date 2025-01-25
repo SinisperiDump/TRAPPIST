@@ -4,7 +4,7 @@ extends Camera2D
 @export_range(20.0, 300.0, 1.0) var panning_speed: float = 100.0
 @export_range(0.0, 20.0, 1.0) var movement_smoothing: float = 10.0
 @export_range(0.0, 50.0, 1.0) var zoom_smooth: float = 10.0
-@export_range(0.01, 2.3, 0.01) var min_zoom: float = 0.34
+@export_range(0.01, 2.3, 0.01) var min_zoom: float = 0.54
 @export_range(0.01, 2.3, 0.01) var max_zoom: float = 2.3
 @export var zoom_speed: float = 0.1
 

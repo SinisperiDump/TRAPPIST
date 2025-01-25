@@ -31,22 +31,22 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="DummyGuy" parent="Players" instance=ExtResource("3_ixbbf")]
-position = Vector2(238, 301)
+position = Vector2(7771, 6294)
 
 [node name="DummyGuy3" parent="Players" instance=ExtResource("3_ixbbf")]
-position = Vector2(59, 164)
+position = Vector2(7592, 6157)
 
 [node name="DummyGuy4" parent="Players" instance=ExtResource("3_ixbbf")]
-position = Vector2(655, 122)
+position = Vector2(8188, 6115)
 
 [node name="DummyGuy5" parent="Players" instance=ExtResource("3_ixbbf")]
-position = Vector2(406, 144)
+position = Vector2(7939, 6137)
 
 [node name="DummyGuy6" parent="Players" instance=ExtResource("3_ixbbf")]
-position = Vector2(589, 347)
+position = Vector2(8122, 6340)
 
 [node name="DummyGuy2" parent="Players" instance=ExtResource("3_ixbbf")]
-position = Vector2(417, 536)
+position = Vector2(7950, 6529)
 
 [node name="Aliens" type="Node2D" parent="." groups=["aliens"]]
 y_sort_enabled = true
@@ -89,7 +89,7 @@ size_flags_vertical = 8
 [node name="UnitSelectionUI" parent="UI/Control/HBoxContainer/PanelContainer3" node_paths=PackedStringArray("unit_dispatcher") instance=ExtResource("5_e4vsh")]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 8
 unit_dispatcher = NodePath("../../../../../UnitDispatcher")
 

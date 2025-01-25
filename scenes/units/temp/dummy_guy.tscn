@@ -19,28 +19,28 @@ size = Vector2(42, 64)
 radius = 12.0
 height = 44.0
 
-[sub_resource type="Resource" id="Resource_cj3m0"]
+[sub_resource type="Resource" id="Resource_1frd4"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[sub_resource type="Resource" id="Resource_h8ynf"]
+[sub_resource type="Resource" id="Resource_m6v8i"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[sub_resource type="Resource" id="Resource_0cp6c"]
+[sub_resource type="Resource" id="Resource_6j4tq"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
 max_bonus = 0.0
 temp_value = 0.0
 
-[sub_resource type="Resource" id="Resource_7m6b7"]
+[sub_resource type="Resource" id="Resource_bbyyy"]
 resource_local_to_scene = true
 script = ExtResource("5_fftov")
 max_value = 1.0
@@ -87,10 +87,10 @@ base_damage = 50.0
 
 [node name="StatusComponent" parent="." instance=ExtResource("4_tc8w2")]
 unique_name_in_owner = true
-health = SubResource("Resource_cj3m0")
-shield = SubResource("Resource_h8ynf")
-armor = SubResource("Resource_0cp6c")
-speed = SubResource("Resource_7m6b7")
+health = SubResource("Resource_1frd4")
+shield = SubResource("Resource_m6v8i")
+armor = SubResource("Resource_6j4tq")
+speed = SubResource("Resource_bbyyy")
 
 [node name="NavigationComponent" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("6_nl61o")]
 unique_name_in_owner = true

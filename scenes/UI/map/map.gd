@@ -32,7 +32,7 @@ func _draw() -> void:
 
 
 func to_map_coordinates(pos: Vector2) -> Vector2:
-	pos = pos / 5000  # 5000 is a map size in px
+	pos = pos / Refs.world_size  # 8100 is a map size in px
 	pos = (pos * self.size)
 	return pos
 
