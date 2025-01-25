@@ -75,7 +75,7 @@ func execute_order(order: Order) -> void:
 	current_order = order
 	## currently they are the same
 	## potentially add patroling order etc
-	if current_order.complete:
+	if !current_order || current_order.complete:
 		current_state = State.IDLE
 		return
 	if current_order is Move:

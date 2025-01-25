@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkpkidifbmrp0"]
+
+[ext_resource type="Script" path="res://scenes/UI/map/map.gd" id="1_1icvm"]
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1icvm")

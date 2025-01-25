@@ -1,4 +1,5 @@
 extends Node
+signal alien_created
 var active_aliens: Dictionary = {}
 var inactive_aliens: Array[Node2D] = []
 
@@ -16,6 +17,7 @@ var alien_holder: Node = null
 
 func create_alien() -> Node2D:
 	if alien_count < max_alien_count:
+		alien_created.emit()
 		alien_count += 1
 		if inactive_aliens.is_empty():
 			if !alien_holder:
