@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://drx5xgpnxj15f"]
+[gd_scene load_steps=19 format=4 uid="uid://drx5xgpnxj15f"]
 
 [ext_resource type="Texture2D" uid="uid://bogyy2pc0rw7l" path="res://assets/textures/debug/ground2.png" id="1_esvov"]
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_nn2d2"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://bn46hb2fjckqq" path="res://scenes/buildings/barracks/barracks.tscn" id="6_nxjgk"]
 [ext_resource type="PackedScene" uid="uid://bnabubt0aw0ey" path="res://scenes/environment/resource_deposit/resource_deposit.tscn" id="9_y5yww"]
 [ext_resource type="Script" path="res://resources/ores/ore.gd" id="10_8wyyb"]
+
+[sub_resource type="Curve2D" id="Curve2D_rklhr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -110.809, -113.803, 0, 0, 0, 0, 5171.27, -129.111, 0, 0, 0, 0, 5170.05, 5242.9, 0, 0, 0, 0, -83.8743, 5185.72, 0, 0, 0, 0, -110.809, -113.803)
+}
+point_count = 5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_djsun"]
 texture = ExtResource("1_esvov")
@@ -59,8 +65,7 @@ y_sort_enabled = true
 script = ExtResource("1_nn2d2")
 
 [node name="WaveSpawner" parent="." instance=ExtResource("5_5p1ip")]
-position = Vector2(447.182, 569.792)
-scale = Vector2(0.888618, 1.20727)
+curve = SubResource("Curve2D_rklhr")
 spawn_rate_sec = 0.1
 num_aliens = 500
 

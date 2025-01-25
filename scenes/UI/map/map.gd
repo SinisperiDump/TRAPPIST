@@ -26,7 +26,9 @@ func _draw() -> void:
 			#var base_position: Vector2 = get_tree().get_first_node_in_group("base").global_position
 			# if !is_in_radius(AlienManager.active_aliens[i].global_position, base_position, 3000.0):
 			# 	continue
-			draw_circle(coords, 5.0, Color.RED)
+			draw_circle(coords, 2.0, Color.RED)
+	for i in get_tree().get_nodes_in_group("unit"):
+		draw_circle(to_map_coordinates(i.global_position), 2.0, Color.BLUE)
 
 
 func to_map_coordinates(pos: Vector2) -> Vector2:

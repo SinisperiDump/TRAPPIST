@@ -1,15 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtls62wl2wp4q"]
+[gd_scene load_steps=2 format=3 uid="uid://dtls62wl2wp4q"]
 
 [ext_resource type="Script" path="res://scenes/aliens/spawner/wave_spawner.gd" id="1_4tu3m"]
 
-[sub_resource type="Curve2D" id="Curve2D_vguhs"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -719, -544, 0, 0, 0, 0, 5577, -532, 0, 0, 0, 0, 5608, 3732, 0, 0, 0, 0, -657, 3772, 0, 0, 0, 0, -719, -549)
-}
-point_count = 5
-
 [node name="WaveSpawner" type="Path2D"]
-curve = SubResource("Curve2D_vguhs")
 script = ExtResource("1_4tu3m")
 
 [node name="SpawnLocation" type="PathFollow2D" parent="."]

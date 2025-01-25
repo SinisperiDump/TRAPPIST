@@ -151,7 +151,7 @@ size = Vector2(251, 156)
 [sub_resource type="CircleShape2D" id="CircleShape2D_v3dla"]
 radius = 169.169
 
-[node name="BaseBuilding" type="Node2D" groups=["base"]]
+[node name="BaseBuilding" type="Node2D" groups=["base", "building"]]
 script = ExtResource("1_l72ex")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

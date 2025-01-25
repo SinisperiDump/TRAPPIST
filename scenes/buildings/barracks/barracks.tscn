@@ -115,7 +115,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Barracks" type="Node2D"]
+[node name="Barracks" type="Node2D" groups=["building"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -42)
