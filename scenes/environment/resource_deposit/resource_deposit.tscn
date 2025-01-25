@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnabubt0aw0ey"]
 
-[ext_resource type="Script" path="res://scenes/environment/resource_deposits/radioactive_mat/radioactive_mat.gd" id="1_pjrlm"]
+[ext_resource type="Script" path="res://scenes/environment/resource_deposit/resource_deposit.gd" id="1_pjrlm"]
 [ext_resource type="Script" path="res://scenes/components/click_detector/click_detector.gd" id="3_gunao"]
 
 [sub_resource type="Gradient" id="Gradient_kuf70"]
