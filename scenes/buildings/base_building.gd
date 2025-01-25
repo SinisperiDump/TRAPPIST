@@ -18,6 +18,7 @@ func _ready() -> void:
 	%ProgressBar.value = status.health.value
 	status.health.value_zero.connect(_on_being_destroyed)
 	unit_detector.body_entered.connect(_on_unit_entered)
+	Refs.base_location = self.global_position
 
 
 func _on_clicked() -> void:

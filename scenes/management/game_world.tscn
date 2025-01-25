@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://t5wvk7amkuoc"]
+[gd_scene load_steps=9 format=3 uid="uid://t5wvk7amkuoc"]
 
 [ext_resource type="Script" path="res://scenes/management/game_world.gd" id="1_lwtwu"]
 [ext_resource type="PackedScene" uid="uid://drx5xgpnxj15f" path="res://scenes/levels/debug_level.tscn" id="2_4v6ws"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dkpkidifbmrp0" path="res://scenes/UI/map/map.tscn" id="5_djij1"]
 [ext_resource type="PackedScene" uid="uid://csn0fexxbmjm3" path="res://scenes/UI/unit_selection/unit_selection_ui.tscn" id="5_e4vsh"]
 [ext_resource type="Script" path="res://scenes/camera/camera.gd" id="6_8vqvl"]
+[ext_resource type="PackedScene" uid="uid://dpl6vycojmj0b" path="res://scenes/UI/building_menu/building_button.tscn" id="8_2p5mm"]
 
 [node name="GameWorld" type="Node2D"]
 y_sort_enabled = true
@@ -86,13 +87,35 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 
-[node name="UnitSelectionUI" parent="UI/Control/HBoxContainer/PanelContainer3" node_paths=PackedStringArray("unit_dispatcher") instance=ExtResource("5_e4vsh")]
+[node name="UnitSelectionUI" parent="UI/Control/HBoxContainer/PanelContainer3" instance=ExtResource("5_e4vsh")]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
-unit_dispatcher = NodePath("../../../../../UnitDispatcher")
 
-[node name="PanelContainer2" type="PanelContainer" parent="UI/Control/HBoxContainer"]
+[node name="BuildMenu" type="PanelContainer" parent="UI/Control/HBoxContainer"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/HBoxContainer/BuildMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/HBoxContainer/BuildMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="BuildingName2" type="Label" parent="UI/Control/HBoxContainer/BuildMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Building Menu"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="UI/Control/HBoxContainer/BuildMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" parent="UI/Control/HBoxContainer/BuildMenu/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_2p5mm")]
+layout_mode = 2
+
+[node name="BuildingName" type="Label" parent="UI/Control/HBoxContainer/BuildMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Building Name"
+horizontal_alignment = 1
