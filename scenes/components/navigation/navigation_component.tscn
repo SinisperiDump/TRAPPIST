@@ -7,8 +7,9 @@ script = ExtResource("1_2qte0")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
+path_desired_distance = 64.0
 target_desired_distance = 64.0
 avoidance_enabled = true
-radius = 22.0
+radius = 16.0
 max_speed = 500.0
 debug_enabled = true

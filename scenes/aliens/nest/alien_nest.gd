@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func _on_right_click() -> void:
-	var order = Order.new(self.global_position, Order.ATTACK)
+	var order = Attack.new(self.global_position)
 	EventBus.unit_order_created.emit(order)
 
 

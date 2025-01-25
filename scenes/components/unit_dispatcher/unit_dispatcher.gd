@@ -38,7 +38,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		if event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed():
 			if !selected_units.is_empty():
-				var order = Order.new(get_global_mouse_position(), Order.MOVE)
+				var order = Move.new(get_global_mouse_position())
 				dispatch_order(order)
 
 	if event is InputEventMouseMotion:
@@ -111,9 +111,9 @@ func _on_single_unit_selected(unit: Node, additive: bool) -> void:
 
 func dispatch_order(o: Order) -> void:
 	var temp: Vector2 = o.position
-
 	for key in selected_units:
 		if selected_units[key].unit_data.unit_type != UnitDataComponent.UnitType.BUILDING && selected_units[key].unit_data.unit_type != UnitDataComponent.UnitType.RESOURCE:
-			o.position = temp
-			temp = Utils.choose_point_in_rad(o.position, 100, 100)
+			if o is Move:
+				o.position = temp
+				temp = Utils.choose_point_in_rad(o.position, 100, 100)
 			selected_units[key].execute_order(o)

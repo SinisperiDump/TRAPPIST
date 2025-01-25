@@ -36,13 +36,14 @@ func _on_being_destroyed() -> void:
 
 
 func _on_unit_entered(unit: Node) -> void:
-	if unit.current_order && unit.current_order.type == Order.GATHER:
-		if !unit.inventory.is_empty():
-			print(unit.inventory.ore_type)
-			match unit.inventory.ore_type:
+	if unit.current_order is Gather:
+		if unit.current_order.quantity:
+			match unit.current_order.resource.type:
 				Ore.Type.RADIOACTIVE_MAT:
-					rad += unit.inventory.quantity
+					rad += unit.current_order.quantity
 				_:
-					metal += unit.inventory.quantity
+					metal += unit.current_order.quantity
 			prints("rad", rad, "met", metal)
-			unit.execute_order(unit.prev_order)
+			unit.current_order.quantity = 0
+			unit.current_order.go_back()
+			unit.execute_order(unit.current_order)

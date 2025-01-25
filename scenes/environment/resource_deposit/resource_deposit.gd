@@ -12,14 +12,17 @@ func _ready() -> void:
 
 
 func _on_right_click() -> void:
-	var order = Order.new(self.global_position, Order.GATHER)
+	var order = Gather.new(self.global_position, base_position)
 	EventBus.unit_order_created.emit(order)
 
 
 func _on_unit_entered(unit: Node) -> void:
 	if unit.current_order:
-		if unit.current_order.type == Order.GATHER:
-			var order = Order.new(base_position, Order.GATHER)
-			unit.inventory = {"ore_type": ore.type, "quantity": 1}
-			## needs to be executed by guys currently employed here
-			unit.execute_order(order)
+		if unit.current_order is Gather:
+			var new_order = Gather.new(unit.current_order.to_pos, unit.current_order.from_pos)
+			new_order.resource = ore
+			new_order.quantity = 1
+			unit.execute_order(new_order)
+
+	else:
+		print("no current order", unit.current_order)

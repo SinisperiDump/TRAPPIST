@@ -7,7 +7,6 @@ signal took_damage(hp: float)
 @onready var aggrevator: Area2D = %AlienAggrevator
 @onready var click_detector: ClickDetector = %ClickDetector
 enum State { IDLE, MOVING, ATTACKING }
-var inventory: Dictionary = {}
 var current_state: State
 var current_order: Order
 var prev_order: Order
@@ -32,12 +31,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if current_state == State.IDLE:
-		pass
-	elif current_state == State.MOVING:
-		if Utils.vec2_approx_eq(self.global_position, nav_target, 64.0):
-			current_state = State.IDLE
-	else:
+	if current_state == State.ATTACKING:
 		curr_attack += _delta
 		if curr_attack > attack_freq:
 			curr_attack = 0.0
@@ -58,6 +52,9 @@ func attack() -> void:
 		current_combat_target.take_damage(unit_data.base_damage)
 	else:
 		current_state = State.IDLE
+		current_order.complete = true
+		print("exectuting prev_order", self.global_position == prev_order.position, prev_order is Attack)
+		execute_order(prev_order)
 
 
 func take_damage(damage: float) -> void:
@@ -76,28 +73,29 @@ func _on_health_zero() -> void:
 func execute_order(order: Order) -> void:
 	prev_order = current_order
 	current_order = order
-	match order.type:
-		## currently they are the same
-		## potentially add patroling order etc
-		Order.MOVE:
-			current_state = State.MOVING
-			move_to(order.position)
-		Order.ATTACK:
-			current_state = State.MOVING
-			move_to(order.position)
-		Order.GATHER:
-			current_state = State.MOVING
-			move_to(order.position)
-
-	pass
+	## currently they are the same
+	## potentially add patroling order etc
+	if current_order.complete:
+		current_state = State.IDLE
+		return
+	if current_order is Move:
+		current_state = State.MOVING
+		move_to(order.position)
+	elif current_order is Attack:
+		current_state = State.ATTACKING
+		move_to(order.position)
+	elif current_order is Gather:
+		current_state = State.MOVING
+		move_to(order.from_pos)
 
 
 ## ============ COMBAT
 
 
 func _on_alien_spotted(area: Area2D) -> void:
-	move_to(self.global_position)
 	current_state = State.ATTACKING
+	var order = Attack.new(self.global_position)
+	execute_order(order)
 	combat_targets[area.get_instance_id()] = area
 	if !area.died.is_connected(_on_alien_killed):
 		area.died.connect(_on_alien_killed)
@@ -112,7 +110,8 @@ func _on_alien_lost(area: Area2D) -> void:
 
 
 func _on_nest_spotted(nest: Node) -> void:
-	move_to(self.global_position)
+	var order = Attack.new(self.global_position)
+	execute_order(order)
 	current_state = State.ATTACKING
 	combat_targets[nest.get_instance_id()] = nest
 	if !nest.destroyed.is_connected(_on_nest_destroyed):
@@ -136,6 +135,7 @@ func _on_alien_killed(alien: Node) -> void:
 		pick_combat_target()
 	if !current_combat_target:
 		current_state = State.IDLE
+		execute_order(prev_order)
 
 
 func _on_nest_destroyed(nest: Node) -> void:
@@ -145,3 +145,4 @@ func _on_nest_destroyed(nest: Node) -> void:
 		pick_combat_target()
 	if !current_combat_target:
 		current_state = State.IDLE
+		execute_order(prev_order)
