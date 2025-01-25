@@ -1,6 +1,7 @@
 extends Node
 
 var alien_nests_left: int = 0
+var in_build_mode: bool = false
 
 
 func nest_created() -> void:

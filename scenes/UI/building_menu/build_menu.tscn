@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7s0lytndtmbd"]
+[gd_scene load_steps=6 format=3 uid="uid://b7s0lytndtmbd"]
 
 [ext_resource type="PackedScene" uid="uid://dpl6vycojmj0b" path="res://scenes/UI/building_menu/building_button.tscn" id="1_bi0oe"]
+[ext_resource type="Script" path="res://scenes/UI/building_menu/building_menu.gd" id="1_uf48g"]
+[ext_resource type="Texture2D" uid="uid://cw04o0qh2oaum" path="res://assets/textures/barracks/barracks_spritesheet.png" id="3_boyr3"]
+[ext_resource type="PackedScene" uid="uid://bn46hb2fjckqq" path="res://scenes/buildings/barracks/barracks.tscn" id="4_kcqd0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrjvb"]
+atlas = ExtResource("3_boyr3")
+region = Rect2(8, 24, 160, 144)
 
 [node name="BuildMenu" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 300)
+script = ExtResource("1_uf48g")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -16,12 +24,13 @@ theme_override_constants/margin_bottom = 24
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="BuildingName2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Building Menu"
 horizontal_alignment = 1
 
-[node name="BuildingSelection" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+[node name="BuildingList" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -29,27 +38,16 @@ theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
 columns = 3
 
-[node name="PanelContainer" parent="MarginContainer/VBoxContainer/BuildingSelection" instance=ExtResource("1_bi0oe")]
+[node name="PanelContainer" parent="MarginContainer/VBoxContainer/BuildingList" instance=ExtResource("1_bi0oe")]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+icon = SubResource("AtlasTexture_mrjvb")
+description = "barracks"
+building_scene = ExtResource("4_kcqd0")
 
-[node name="PanelContainer2" parent="MarginContainer/VBoxContainer/BuildingSelection" instance=ExtResource("1_bi0oe")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="PanelContainer3" parent="MarginContainer/VBoxContainer/BuildingSelection" instance=ExtResource("1_bi0oe")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="PanelContainer4" parent="MarginContainer/VBoxContainer/BuildingSelection" instance=ExtResource("1_bi0oe")]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-
-[node name="BuildingName" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="BuildingDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Building Name"
 horizontal_alignment = 1

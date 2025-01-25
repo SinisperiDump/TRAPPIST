@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpl6vycojmj0b"]
 
-[ext_resource type="Texture2D" uid="uid://cw04o0qh2oaum" path="res://assets/textures/barracks/barracks_spritesheet.png" id="1_mgwog"]
+[ext_resource type="Script" path="res://scenes/UI/building_menu/building_button.gd" id="1_ka8jv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vt1wp"]
-atlas = ExtResource("1_mgwog")
-region = Rect2(8, 24, 160, 144)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jgo3x"]
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="BuildingButton" type="PanelContainer"]
+script = ExtResource("1_ka8jv")
 
 [node name="TextureButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = SubResource("AtlasTexture_vt1wp")
+texture_normal = SubResource("PlaceholderTexture2D_jgo3x")
 ignore_texture_size = true
 stretch_mode = 0

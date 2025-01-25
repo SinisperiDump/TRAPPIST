@@ -8,3 +8,4 @@ func _ready() -> void:
 
 	Refs.world_size.x = tilemap_size.x * tile_size.x
 	Refs.world_size.y = tilemap_size.y * tile_size.y / 2
+	Refs.current_level = self

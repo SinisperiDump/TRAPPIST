@@ -1,6 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bn46hb2fjckqq"]
+[gd_scene load_steps=20 format=3 uid="uid://bn46hb2fjckqq"]
 
+[ext_resource type="Script" path="res://scenes/buildings/barracks/barracks.gd" id="1_50wku"]
 [ext_resource type="Texture2D" uid="uid://cw04o0qh2oaum" path="res://assets/textures/barracks/barracks_spritesheet.png" id="1_rg5ly"]
+[ext_resource type="Script" path="res://scenes/components/click_detector/click_detector.gd" id="3_0r8v3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oa8ha"]
 atlas = ExtResource("1_rg5ly")
@@ -116,9 +118,35 @@ animations = [{
 }]
 
 [node name="Barracks" type="Node2D" groups=["building"]]
+script = ExtResource("1_50wku")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -42)
+position = Vector2(-1, -28)
 sprite_frames = SubResource("SpriteFrames_txbph")
 autoplay = "default"
 frame_progress = 0.863019
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+show_behind_parent = true
+
+[node name="Collider" type="CollisionPolygon2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+visible = false
+polygon = PackedVector2Array(-83, 2, 2, 52, 75, 9, 74, -29, 68, -40, -4, -83, -18, -81, -31, -73, -31, -34)
+
+[node name="BuildModeCollider" type="Area2D" parent="."]
+unique_name_in_owner = true
+input_pickable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BuildModeCollider"]
+visible = false
+polygon = PackedVector2Array(-83, 2, 2, 52, 79, 3, -8, -45)
+
+[node name="ClickDetector" type="Area2D" parent="."]
+unique_name_in_owner = true
+show_behind_parent = true
+script = ExtResource("3_0r8v3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickDetector"]
+visible = false
+polygon = PackedVector2Array(-83, 2, 2, 52, 75, 9, 74, -29, 68, -40, -4, -83, -18, -81, -31, -73, -31, -34)
