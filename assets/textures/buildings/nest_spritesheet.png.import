@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b36cig70a67pm"
-path="res://.godot/imported/0013.png-cbffc5e50df1d938a62448a53658fa49.ctex"
+uid="uid://c25hw37t5xuog"
+path="res://.godot/imported/nest_spritesheet.png-68a7c887c96cd5af26371d79dca6dbf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/planet/0013.png"
-dest_files=["res://.godot/imported/0013.png-cbffc5e50df1d938a62448a53658fa49.ctex"]
+source_file="res://assets/textures/buildings/nest_spritesheet.png"
+dest_files=["res://.godot/imported/nest_spritesheet.png-68a7c887c96cd5af26371d79dca6dbf4.ctex"]
 
 [params]
 

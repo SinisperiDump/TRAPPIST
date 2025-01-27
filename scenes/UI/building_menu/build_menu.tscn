@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dpl6vycojmj0b" path="res://scenes/UI/building_menu/building_button.tscn" id="1_bi0oe"]
 [ext_resource type="Script" path="res://scenes/UI/building_menu/building_menu.gd" id="1_uf48g"]
-[ext_resource type="Texture2D" uid="uid://cw04o0qh2oaum" path="res://assets/textures/barracks/barracks_spritesheet.png" id="3_boyr3"]
+[ext_resource type="Texture2D" uid="uid://cw04o0qh2oaum" path="res://assets/textures/buildings/barracks_spritesheet.png" id="3_boyr3"]
 [ext_resource type="PackedScene" uid="uid://bn46hb2fjckqq" path="res://scenes/buildings/barracks/barracks.tscn" id="4_kcqd0"]
+
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mrjvb"]
 atlas = ExtResource("3_boyr3")

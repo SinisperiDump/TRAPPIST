@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://bn46hb2fjckqq"]
 
 [ext_resource type="Script" path="res://scenes/buildings/barracks/barracks.gd" id="1_50wku"]
-[ext_resource type="Texture2D" uid="uid://cw04o0qh2oaum" path="res://assets/textures/barracks/barracks_spritesheet.png" id="1_rg5ly"]
+[ext_resource type="Texture2D" uid="uid://cw04o0qh2oaum" path="res://assets/textures/buildings/barracks_spritesheet.png" id="1_rg5ly"]
 [ext_resource type="Script" path="res://scenes/components/click_detector/click_detector.gd" id="3_0r8v3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oa8ha"]

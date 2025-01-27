@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dslnafey10dae"
-path="res://.godot/imported/0004.png-304de79566f1b96937cafde6e828bdc7.ctex"
+uid="uid://jguat82xvmq7"
+path="res://.godot/imported/supply_spritesheet.png-46fa779611fe1bcf7bcd970390b9b3a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/planet/0004.png"
-dest_files=["res://.godot/imported/0004.png-304de79566f1b96937cafde6e828bdc7.ctex"]
+source_file="res://assets/textures/buildings/supply_spritesheet.png"
+dest_files=["res://.godot/imported/supply_spritesheet.png-46fa779611fe1bcf7bcd970390b9b3a0.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
